@@ -1,0 +1,3854 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Temporal feature store for Teradata Vantage — for data scientists.">
+      
+      
+      
+        <link rel="canonical" href="https://denismolin.github.io/tdfs4ds/ai/consumer-agent.html">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/img/teradata_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Consumer agent - tdfs4ds</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/css/teradata.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#consumer-agent" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="tdfs4ds" class="md-header__button md-logo" aria-label="tdfs4ds" data-md-component="logo">
+      
+  <img src="../assets/img/tdfs4ds_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            tdfs4ds
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Consumer agent
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/denismolin/tdfs4ds" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    denismolin/tdfs4ds
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/tdfs4ds/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  tdfs4ds
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="tdfs4ds" class="md-nav__button md-logo" aria-label="tdfs4ds" data-md-component="logo">
+      
+  <img src="../assets/img/tdfs4ds_logo.png" alt="logo">
+
+    </a>
+    tdfs4ds
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/denismolin/tdfs4ds" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    denismolin/tdfs4ds
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tdfs4ds
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    tdfs4ds
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/agent/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    agent
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/chart_render.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chart_render
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/chatbot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chatbot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/consumer_agent.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    consumer_agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/embedding.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/graph.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/query_optimizer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    query_optimizer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/query_optimizer_graph.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    query_optimizer_graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/vector_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vector_index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/agent/vector_store_teradata.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vector_store_teradata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/benchmark/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    benchmark
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    benchmark
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/benchmark/report.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/benchmark/runner.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    runner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/catalog.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cli
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/data_domain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    data_domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/dataset/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dataset
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    dataset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/dataset/batch_retrieval.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    batch_retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/dataset/builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/dataset/dataset.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/dataset/dataset_catalog.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dataset_catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/datasets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/execution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/feature_store/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_store
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    feature_store
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/feature_store/entity_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    entity_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/feature_store/feature_data_processing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_data_processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/feature_store/feature_query_retrieval.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_query_retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/feature_store/feature_store_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_store_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/genai/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    genai
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_12" id="__nav_1_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    genai
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/genai/documentation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/lifecycle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/lineage/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_14" id="__nav_1_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    lineage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/lineage/indexing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/lineage/lineage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/lineage/lineage_store.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage_store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/lineage/network.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/process_store/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_store
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_15" id="__nav_1_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    process_store
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/process_store/process_followup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_followup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/process_store/process_query_administration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_query_administration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/process_store/process_registration_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_registration_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/process_store/process_store_catalog_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_store_catalog_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/read_federation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    read_federation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/scheduling/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scheduling
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_17" id="__nav_1_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    scheduling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/scheduling/parallel_plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    parallel_plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/scheduling/script.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/scheduling/unify.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    unify
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/scheduling/viz.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    viz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_18" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/serve/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    serve
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_18" id="__nav_1_18_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    serve
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/serve/app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/serve/bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/serve/dashboard_report.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dashboard_report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/serve/openai_router.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    openai_router
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/serve/panels.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    panels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_19" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../reference/tdfs4ds/utils/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    utils
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_19" id="__nav_1_19_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    utils
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/filter_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    filter_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/lineage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/query_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    query_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/reconnect.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    reconnect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/time_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    time_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/vector_store_auth.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vector_store_auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/tdfs4ds/utils/visualization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    visualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graph-singleton-state-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph Singleton &amp; State Persistence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-as-a-named-entity-knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context as a Named-Entity Knowledge Graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accumulated-context-feature-keying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accumulated-context feature keying
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp-data_query-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP / DATA_QUERY integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compound-explain-algorithm-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compound EXPLAIN + ALGORITHM questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-scoped-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity-scoped SUMMARY
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-remembered-across-turns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State remembered across turns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ambiguous-feature-entity-clarification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ambiguous-feature entity clarification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typo-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typo recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lineage-grounding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lineage grounding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programmatic-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programmatic API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explain-definition-drill-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EXPLAIN → DEFINITION drill-down
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chatbot-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chatbot UI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chatbot UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-trace-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent trace panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-knowledge-graph-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context knowledge graph panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-parameters-panel-launch_chatbot_app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admin parameters panel (launch_chatbot_app)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-dictionary-retrieval-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Business dictionary &amp; retrieval architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Business dictionary &amp; retrieval architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation-tables-all-validtime-temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation tables (all VALIDTIME temporal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-gets-vectorised" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What gets vectorised
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-retrieval-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hybrid retrieval strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-index-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector index management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-available-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing available models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notebooks
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/denismolin/tdfs4ds/edit/master/docs/ai/consumer-agent.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/denismolin/tdfs4ds/raw/master/docs/ai/consumer-agent.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="consumer-agent">Consumer agent<a class="headerlink" href="#consumer-agent" title="Permanent link">&para;</a></h1>
+<p>A conversational chatbot built on LangGraph + Gradio with a pluggable vector
+store (ChromaDB by default, Teradata Enterprise Vector Store as an opt-in).
+Business users ask natural-language questions; the agent answers from the
+<strong>business dictionary</strong>.</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<p>The agent executes a multi-stage LangGraph <code>StateGraph</code> with full cross-turn
+context persistence via a process-level <code>MemorySaver</code> singleton:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>START
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  ↓
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>classify
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  (LLM: intent classification + object name extraction via Pydantic structured output)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  ↓
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>detect_domain
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  (Scan all DATA_DOMAINs; resolve owning domain; persisted across turns)
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  ↓
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>recognize_entity
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  (Type-tag the object: feature, dataset, or process view)
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  ↓
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>[conditional routing by intent]
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  ├─ SEARCH         → skill_search        → synthesize → END
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  ├─ DEFINITION     → skill_definition    → synthesize → END
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  ├─ USAGE          → skill_usage         → synthesize → END
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  ├─ FRESHNESS      → skill_freshness     → synthesize → END
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  ├─ SUMMARY        → skill_summary       → synthesize → END
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>  ├─ LINEAGE        → skill_lineage       → synthesize → END
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>  ├─ EXPLAIN        → skill_explain       → synthesize → END
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>  ├─ ALGORITHM      → skill_algorithm     → synthesize → END (MCP only; dual-intent runs EXPLAIN first)
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>  ├─ DATASET        → skill_dataset       → synthesize → END
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>  ├─ BUILD_DATASET  → skill_build_dataset → synthesize → END
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>  ├─ RECAP          → skill_recap         → synthesize → END (memory only)
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>  ├─ OUT_OF_SCOPE   → (polite redirect)   → synthesize → END
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>  └─ DATA_QUERY     → skill_mcp_tools     → synthesize → END (MCP only)
+</span></code></pre></div>
+<p><code>RECAP</code> and <code>OUT_OF_SCOPE</code> are <strong>built-in intents</strong> — they have no <code>ca-*</code>
+<code>SKILL.md</code> file. <code>build_graph()</code> injects their descriptions into the dynamic
+Pydantic intent model and the classifier prompt, and <code>_build_classifier_examples()</code>
+seeds explicit few-shot examples so they fire reliably. <code>RECAP</code> reads only the
+accumulated conversation memory (no Teradata query) to summarise the features,
+entities, and datasets discussed so far; <code>OUT_OF_SCOPE</code> politely redirects
+off-topic questions (weather, general coding, etc.).</p>
+<h3 id="graph-singleton-state-persistence">Graph Singleton &amp; State Persistence<a class="headerlink" href="#graph-singleton-state-persistence" title="Permanent link">&para;</a></h3>
+<p>The graph instance is cached in a module-level dict <code>_graph_instances</code>, keyed
+by <code>(frozenset(skills), plugin_key, mcp_enabled)</code>. This singleton pattern ensures:</p>
+<ul>
+<li><strong>One <code>MemorySaver</code> checkpoint per (skills, MCP) combo</strong> — cross-turn state
+  (<code>resolved_data_domain</code>, <code>resolved_feature_triplet</code>, etc.) persists in
+  LangGraph's built-in checkpointer without an external database.</li>
+<li><strong>Automatic graph recompilation</strong> when skills change or MCP is toggled.</li>
+<li><strong>Clean reset via <code>reset_consumer_agent()</code></strong> which clears the entire cache.</li>
+</ul>
+<h3 id="context-as-a-named-entity-knowledge-graph">Context as a Named-Entity Knowledge Graph<a class="headerlink" href="#context-as-a-named-entity-knowledge-graph" title="Permanent link">&para;</a></h3>
+<p>The <code>AgentState</code> TypedDict is a stateful knowledge graph whose fields are
+persisted across conversation turns. Users can refer back without repeating
+context:</p>
+<table>
+<thead>
+<tr>
+<th>State field</th>
+<th>What it represents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resolved_data_domain</code></td>
+<td>Active DATA_DOMAIN (project namespace)</td>
+</tr>
+<tr>
+<td><code>resolved_object_name</code></td>
+<td>Last explicitly named feature or dataset (remembered)</td>
+</tr>
+<tr>
+<td><code>resolved_feature_triplet</code></td>
+<td><code>{feature_name, entity_name, process_id, view_name}</code> — the "current node" in the feature graph</td>
+</tr>
+<tr>
+<td><code>resolved_entity_name</code></td>
+<td>Entity type currently in scope (e.g. <code>"CustomerID"</code>)</td>
+</tr>
+<tr>
+<td><code>resolved_feature_list</code></td>
+<td>One or many features currently discussed</td>
+</tr>
+<tr>
+<td><code>resolved_column_sources</code></td>
+<td><code>{COLUMN_UPPER: source_table}</code> — populated by EXPLAIN, enables drill-down DEFINITION</td>
+</tr>
+<tr>
+<td><code>resolved_dataset_id</code></td>
+<td>UUID from the last SUMMARY turn on a dataset</td>
+</tr>
+<tr>
+<td><code>resolved_dataset_features</code></td>
+<td>Features loaded from that dataset</td>
+</tr>
+<tr>
+<td><code>resolved_entity_name</code></td>
+<td>Entity picked during an entity-clarification turn; drives <code>skill_definition</code>'s entity hint</td>
+</tr>
+<tr>
+<td><code>pending_action</code> / <code>pending_action_context</code></td>
+<td>State machine for multi-step flows (dataset creation, entity clarification, ambiguous-query clarification)</td>
+</tr>
+</tbody>
+</table>
+<p>The effective current object is resolved by <code>_effective_object(state)</code> with this
+priority: explicit this-turn → <code>resolved_feature_triplet.feature_name</code> →
+<code>resolved_object_name</code>.</p>
+<h3 id="accumulated-context-feature-keying">Accumulated-context feature keying<a class="headerlink" href="#accumulated-context-feature-keying" title="Permanent link">&para;</a></h3>
+<p><code>accumulated_context_graph.features</code> is keyed by <code>FEATURE_NAME::ENTITY_NAME</code>
+(both uppercased) — <strong>not</strong> by the bare feature name — so the same feature name
+registered under two entities never collides in the cross-turn cache. The
+<code>features</code>, <code>datasets</code>, <code>entities</code>, and <code>source_views</code> sections all use
+uppercase keys for stable lookup (<code>processes</code> and <code>freshness_timeline</code> stay
+keyed by their process-id UUIDs). Skills resolve entries through
+<code>_feat_cache_lookup()</code>, which tries the exact composite key, then a <code>FEATURE::</code>
+prefix scan, then the legacy plain-<code>FEATURE</code> key (so older snapshots still
+load).</p>
+<h2 id="mcp-data_query-integration">MCP / DATA_QUERY integration<a class="headerlink" href="#mcp-data_query-integration" title="Permanent link">&para;</a></h2>
+<p>When <code>tdfs4ds.MCP_SERVER_URL</code> is configured, users can enable the "Enable MCP Tools"
+checkbox in the chatbot to route questions to remote data sources via the MCP
+(Model Context Protocol).</p>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>The graph registers an additional <code>DATA_QUERY</code> intent and corresponding <code>skill_mcp_tools</code> node.</li>
+<li>When MCP is enabled and no feature-store skill matches the question, the classifier
+   may assign <code>DATA_QUERY</code> intent.</li>
+<li><code>_skill_mcp_tools_async()</code> uses <code>langchain_mcp_adapters.MultiServerMCPClient</code> to wrap
+   the remote tools (e.g. SQL query execution, file upload, database operations).</li>
+<li>A ReAct agent (<code>langgraph.prebuilt.create_react_agent</code>) chains tool calls until the
+   query is resolved.</li>
+</ol>
+<p><strong>Data governance &amp; safety:</strong></p>
+<ul>
+<li><code>_make_guarded_tools()</code> wraps all MCP tools with rejection logic: queries referencing
+  internal feature-store objects (<code>FS_T_*</code>, <code>FS_V_*</code>, process view names) are blocked.</li>
+<li><code>SELECT</code> queries automatically get <code>TOP 20</code> injected; if results hit the limit, a warning
+  is appended so the user knows data was truncated.</li>
+<li>Event loop compatibility: uses <code>ThreadPoolExecutor</code> inside a running Jupyter loop,
+  <code>asyncio.run()</code> in other contexts.</li>
+</ul>
+<h2 id="intents">Intents<a class="headerlink" href="#intents" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Intent</th>
+<th>Trigger example</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SEARCH</code></td>
+<td>"What features analyse customer spending?"</td>
+<td>Semantic search over <code>objects</code> / <code>sections</code> / <code>columns</code> collections (Chroma or Teradata Vector Store)</td>
+</tr>
+<tr>
+<td><code>DEFINITION</code></td>
+<td>"What does <code>total_amount</code> measure?"</td>
+<td>Resolves feature → process view → column doc in <code>FS_BUSINESS_DICTIONARY_COLUMNS</code></td>
+</tr>
+<tr>
+<td><code>USAGE</code></td>
+<td>"How do I use <code>avg_amount</code> in Tableau?"</td>
+<td>Audience, granularity, regulatory guidance</td>
+</tr>
+<tr>
+<td><code>FRESHNESS</code></td>
+<td>"Is <code>total_amount</code> up to date?" / "When was <code>DS_CLAIMS</code> last refreshed?"</td>
+<td>Latest run from <code>follow_up_report()</code>. Works for <strong>individual features</strong> (resolves single process) and <strong>datasets</strong> (aggregates across all processes feeding the dataset; returns <code>last_successful_run</code>, <code>days_since_update</code>, <code>has_recent_failure</code>). Returns "not found" only when the named object is neither a registered feature nor a dataset.</td>
+</tr>
+<tr>
+<td><code>SUMMARY</code></td>
+<td>"List all features for customers" / "What features belong to the <code>provider_id</code> entity?"</td>
+<td>Full feature list with entity + description; scoped to one entity when <code>entity_filter</code> resolves</td>
+</tr>
+<tr>
+<td><code>LINEAGE</code></td>
+<td>"Where does <code>total_amount</code> come from?"</td>
+<td><code>build_teradata_dependency_graph</code> upstream</td>
+</tr>
+<tr>
+<td><code>EXPLAIN</code></td>
+<td>"How is <code>total_amount</code> calculated?"</td>
+<td><code>SHOW VIEW</code> DDL → LLM plain-language explanation + per-column source map (also accumulates into the context graph)</td>
+</tr>
+<tr>
+<td><code>ALGORITHM</code></td>
+<td>"What algorithm is behind <code>ml_risk_score</code>?" <em>(MCP only)</em></td>
+<td>Walks the tdfs4ds→tdstone2 STO metadata chain to explain the ML model: algorithm, hyperparameters, training configuration, Python packages, partition count. Returns answer directly (no second LLM pass). Disabled when MCP is off — algorithm-shaped questions get a "please enable MCP" message instead.</td>
+</tr>
+<tr>
+<td><code>RECAP</code></td>
+<td>"What are the features we are talking about?"</td>
+<td>Reads accumulated conversation memory only — no Teradata query</td>
+</tr>
+<tr>
+<td><code>OUT_OF_SCOPE</code></td>
+<td>"What's the weather today?"</td>
+<td>Polite redirect; the question is unrelated to the feature store</td>
+</tr>
+</tbody>
+</table>
+<p><code>DATASET</code>, <code>BUILD_DATASET</code>, and <code>DATA_QUERY</code> (MCP only) are additional routable
+intents; see the routing diagram above.</p>
+<h3 id="compound-explain-algorithm-questions">Compound EXPLAIN + ALGORITHM questions<a class="headerlink" href="#compound-explain-algorithm-questions" title="Permanent link">&para;</a></h3>
+<p>A compound question <em>"How is <code>ml_risk_score</code> computed? What algorithm is behind it?"</em> carries
+both EXPLAIN signals ("how is … computed") and ALGORITHM signals ("algorithm"). With MCP on:</p>
+<ol>
+<li><strong>Routing</strong> — <code>_node_classify_impl</code> re-routes EXPLAIN → ALGORITHM when both signal sets match.</li>
+<li><strong>Dual-intent execution</strong> — <code>node_skill_algorithm</code> runs <code>skill_explain</code> first (SQL formula),
+   prepends its answer with a <code>---</code> divider above the ALGORITHM answer (ML model details), and
+   persists the EXPLAIN column sources so a follow-up <em>"what is <code>&lt;column&gt;</code>?"</em> still resolves.</li>
+</ol>
+<p>With MCP off, the algorithm half is unavailable and the question routes to EXPLAIN only (the
+<code>_looks_like_algorithm_question</code> guard fires the "enable MCP" message in that case).</p>
+<h3 id="entity-scoped-summary">Entity-scoped SUMMARY<a class="headerlink" href="#entity-scoped-summary" title="Permanent link">&para;</a></h3>
+<p>When the named object resolves to a <strong>registered entity</strong> (not a feature or
+dataset), or when <code>entity_filter</code> is supplied, <code>skill_summary</code> lists only the
+features that belong to that entity — answering <em>"what features belong to
+entity X?"</em>. <code>_recognize_object_type</code> now type-tags <code>entity</code> and <code>data_domain</code>
+objects in addition to <code>feature</code> / <code>dataset</code> / <code>process</code>.</p>
+<h2 id="state-remembered-across-turns">State remembered across turns<a class="headerlink" href="#state-remembered-across-turns" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>State field</th>
+<th>What is remembered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resolved_data_domain</code></td>
+<td>Domain owning the current feature</td>
+</tr>
+<tr>
+<td><code>resolved_object_name</code></td>
+<td>Last explicitly named feature / dataset</td>
+</tr>
+<tr>
+<td><code>resolved_feature_triplet</code></td>
+<td><code>(feature_name, entity_name, process_id, view_name)</code></td>
+</tr>
+<tr>
+<td><code>resolved_entity_name</code></td>
+<td>Entity in focus (e.g. <code>CustomerID</code>)</td>
+</tr>
+<tr>
+<td><code>resolved_feature_list</code></td>
+<td>One or many feature names currently discussed</td>
+</tr>
+<tr>
+<td><code>resolved_column_sources</code></td>
+<td>Column → source-table map from the last EXPLAIN turn</td>
+</tr>
+<tr>
+<td><code>resolved_entity_name</code></td>
+<td>Entity picked during an entity-clarification turn</td>
+</tr>
+</tbody>
+</table>
+<p>Follow-up questions that omit the feature name reuse the previous one
+automatically. When the same feature name exists across multiple entities,
+the remembered entity silently disambiguates.</p>
+<h2 id="ambiguous-feature-entity-clarification">Ambiguous-feature entity clarification<a class="headerlink" href="#ambiguous-feature-entity-clarification" title="Permanent link">&para;</a></h2>
+<p>When a feature name exists under several entities (different granularities),
+the agent first tries to resolve the entity <strong>without asking</strong>:</p>
+<ol>
+<li><strong>Classifier extraction</strong> — the intent models carry an <code>entity_name</code> field;
+   <em>"What is <code>total_amount</code> for <code>pharmacy_id</code>?"</em> extracts <code>pharmacy_id</code> directly
+   and it becomes the entity hint for the skill (top priority in the hint chain).</li>
+<li><strong>Question scan</strong> — <code>_entity_from_question()</code> is a deterministic safety net at
+   every <code>ambiguous_feature</code> site (DEFINITION, FRESHNESS, LINEAGE, EXPLAIN): the
+   raw question is scanned for the candidate entity names (case-insensitive,
+   <code>_</code>/space-normalised, multi-key entities match on any key component) and
+   auto-resolves when exactly one matches.</li>
+</ol>
+<p>Only when neither layer resolves it does <code>skill_definition</code> return
+<code>error="ambiguous_feature"</code> with the valid entity list. Rather than
+re-classifying the user's clarifying reply from scratch — which used to spiral
+into nonsense clarification loops — the agent resolves it <strong>deterministically</strong>:</p>
+<ol>
+<li><code>node_skill_definition</code> raises a tracked <code>awaiting_feature_entity_clarification</code>
+   pending action (via <code>_ambiguous_feature_pending</code>) carrying the entity list,
+   the original feature, and the origin intent. <code>synthesize_answer</code> renders a
+   <strong>numbered</strong> menu — a deterministic EN/FR template, <em>not</em> an LLM call (an
+   LLM-rendered clarification was observed embellishing the question with a
+   guessed generic definition of the feature).</li>
+<li>On the next turn, <code>_node_classify_impl</code> short-circuits the LLM classifier and
+   resolves the reply through <code>_resolve_clarification_choice</code> (digit / ordinal /
+   fuzzy label).</li>
+<li><strong>Role separation + intent inheritance</strong> — the entity comes from the reply,
+   while the feature (<code>object_name</code>) and intent (<code>DEFINITION</code>) are inherited from
+   context. So both a bare <code>"1"</code> and a mixed-concept reply like <em>"the total_amount
+   feature of the provider_id entity"</em> resolve correctly. The chosen entity is
+   stored in <code>resolved_entity_name</code> and used as <code>skill_definition</code>'s entity hint —
+   the answer comes back scoped, with no second menu.</li>
+</ol>
+<h2 id="typo-recovery">Typo recovery<a class="headerlink" href="#typo-recovery" title="Permanent link">&para;</a></h2>
+<p>The classifier pins intent to <strong>question shape, not name recognition</strong>: <em>"what is
+<code>ml_rsk_scre</code>?"</em> stays DEFINITION even though the token matches nothing (it may be
+a typo), instead of falling into SEARCH's speculative synthesis. When the
+documentation lookup then misses, <code>_fuzzy_match_feature</code> (difflib, cutoff 0.75)
+kicks in: a <strong>single</strong> close candidate is answered directly with a visible
+correction note (<em>"'ml_rsk_scre' was not found — answered for the closest match
+'ml_risk_score'"</em>); multiple candidates produce a did-you-mean list. DEFINITION
+and FRESHNESS auto-correct this way, matching the existing LINEAGE / EXPLAIN
+behaviour.</p>
+<h2 id="lineage-grounding">Lineage grounding<a class="headerlink" href="#lineage-grounding" title="Permanent link">&para;</a></h2>
+<p>Lineage answers only ever mention objects that exist in a dependency graph. The
+cross-turn cache is consulted only when a previous LINEAGE turn actually traced
+upstream objects — the bare <code>feature → process_view</code> association written by a
+DEFINITION turn is treated as a cache <strong>miss</strong> and triggers a real
+<code>SHOW VIEW</code>/<code>SHOW TABLE</code> walk. The summarisation prompt forbids inventing
+object names; when no upstream is found the agent says so explicitly instead of
+calling the LLM.</p>
+<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tdfs4ds</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tdfs4ds.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">launch_chatbot_with_index</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">INSTRUCT_MODEL_PROVIDER</span> <span class="o">=</span> <span class="s1">&#39;vllm&#39;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">INSTRUCT_MODEL_URL</span>      <span class="o">=</span> <span class="s1">&#39;https://api.example.com/v1&#39;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">INSTRUCT_MODEL_API_KEY</span>  <span class="o">=</span> <span class="s1">&#39;my-key&#39;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">INSTRUCT_MODEL_MODEL</span>    <span class="o">=</span> <span class="s1">&#39;mistral-7b-instruct&#39;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">EMBEDDING_MODEL_URL</span>     <span class="o">=</span> <span class="s1">&#39;https://api.example.com/v1/e5&#39;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">EMBEDDING_MODEL_MODEL</span>   <span class="o">=</span> <span class="s1">&#39;bge-m3&#39;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># One call: build the vector index (incremental) then launch the chatbot</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">demo</span> <span class="o">=</span> <span class="n">launch_chatbot_with_index</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">7860</span><span class="p">,</span> <span class="n">force_rebuild</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="programmatic-api">Programmatic API<a class="headerlink" href="#programmatic-api" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tdfs4ds.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">consumer_agent</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">consumer_agent</span><span class="p">(</span><span class="s2">&quot;What features are available?&quot;</span><span class="p">,</span> <span class="n">thread_id</span><span class="o">=</span><span class="s2">&quot;session-1&quot;</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">consumer_agent</span><span class="p">(</span><span class="s2">&quot;How is nb_days_since_last_transactions calculated?&quot;</span><span class="p">,</span> <span class="n">thread_id</span><span class="o">=</span><span class="s2">&quot;session-1&quot;</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">consumer_agent</span><span class="p">(</span><span class="s2">&quot;When was it last updated?&quot;</span><span class="p">,</span> <span class="n">thread_id</span><span class="o">=</span><span class="s2">&quot;session-1&quot;</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">consumer_agent</span><span class="p">(</span><span class="s2">&quot;And for CustomerID?&quot;</span><span class="p">,</span> <span class="n">thread_id</span><span class="o">=</span><span class="s2">&quot;session-1&quot;</span><span class="p">)</span>   <span class="c1"># entity remembered, new feature group</span>
+</span></code></pre></div>
+<p><code>consumer_agent</code> returns just the answer string by default. Two opt-in flags
+change the return shape:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">answer</span><span class="p">,</span> <span class="n">trace_md</span> <span class="o">=</span> <span class="n">consumer_agent</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">thread_id</span><span class="o">=</span><span class="s2">&quot;s1&quot;</span><span class="p">,</span> <span class="n">return_trace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">answer</span><span class="p">,</span> <span class="n">trace_md</span><span class="p">,</span> <span class="n">acc_ctx</span> <span class="o">=</span> <span class="n">consumer_agent</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">thread_id</span><span class="o">=</span><span class="s2">&quot;s1&quot;</span><span class="p">,</span> <span class="n">return_context</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>return_trace=True</code> → <code>(answer, trace_md)</code> — the markdown agent trace.</li>
+<li><code>return_context=True</code> → <code>(answer, trace_md, acc_ctx)</code> — a <strong>3-tuple</strong> that also
+  returns the <code>accumulated_context_graph</code> dict (the cross-turn knowledge graph),
+  so callers always get the trace alongside the context.</li>
+</ul>
+<h2 id="explain-definition-drill-down">EXPLAIN → DEFINITION drill-down<a class="headerlink" href="#explain-definition-drill-down" title="Permanent link">&para;</a></h2>
+<p>After an <code>EXPLAIN</code> turn, the agent lists every <strong>variable involved</strong> in the
+formula with its source table. Asking <em>"what is <code>&lt;column&gt;</code>?"</em> resolves the
+column through <code>FS_BUSINESS_DICTIONARY_COLUMNS</code> — even when the column is
+not a registered feature.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>USER: How is total_amount calculated?
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>AGENT: total_amount sums AMOUNT_NET grouped by CUSTOMER_ID.
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>       Variables involved:
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>         AMOUNT_NET  ←  SOURCE_DB.TRANSACTIONS
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>         CUSTOMER_ID ←  SOURCE_DB.TRANSACTIONS
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>USER: what is AMOUNT_NET?
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>AGENT: AMOUNT_NET is the net transaction amount in EUR, post-discount …
+</span></code></pre></div>
+<h2 id="chatbot-ui">Chatbot UI<a class="headerlink" href="#chatbot-ui" title="Permanent link">&para;</a></h2>
+<h3 id="agent-trace-panel">Agent trace panel<a class="headerlink" href="#agent-trace-panel" title="Permanent link">&para;</a></h3>
+<p>The chatbot includes a collapsible <strong>Agent trace</strong> accordion showing full execution:</p>
+<ul>
+<li><strong>Intent Classification</strong> — detected intent, object name (this turn vs. remembered)</li>
+<li><strong>Feature Context</strong> — triplet (feature, entity, process ID, view), feature list, column sources</li>
+<li><strong>Dataset Context</strong> — dataset ID and feature count (if applicable)</li>
+<li><strong>Pending Action</strong> — multi-step flow state (e.g. awaiting dataset name)</li>
+<li><strong>DATA_DOMAIN</strong> — available domains, active domain, resolution source</li>
+<li><strong>Skill Executed</strong> — name + input object</li>
+<li><strong>Skill Result</strong> — structured output (for single features) or context graph (for multi-object)</li>
+<li>Errors include per-step diagnostic messages</li>
+</ul>
+<h3 id="context-knowledge-graph-panel">Context knowledge graph panel<a class="headerlink" href="#context-knowledge-graph-panel" title="Permanent link">&para;</a></h3>
+<p>A second collapsible accordion displays an interactive <strong>Plotly network graph</strong>
+visualising the agent's accumulated context:</p>
+<ul>
+<li><strong>Nodes</strong> (colour-coded by type):</li>
+<li>Domain (blue diamond)</li>
+<li>Entity (green square)</li>
+<li>Features (orange circles)</li>
+<li>Process views (grey squares)</li>
+<li>Datasets (purple triangles)</li>
+<li>Column sources (red nodes, when EXPLAIN was used)</li>
+<li><strong>Edges</strong> show relationships: domain → entity → features → views → datasets</li>
+</ul>
+<p>The graph is rebuilt after each turn to reflect new resolutions, multi-object
+DEFINITION expansions, and EXPLAIN column mappings.</p>
+<h3 id="admin-parameters-panel-launch_chatbot_app">Admin parameters panel (<code>launch_chatbot_app</code>)<a class="headerlink" href="#admin-parameters-panel-launch_chatbot_app" title="Permanent link">&para;</a></h3>
+<p><code>launch_chatbot_app()</code> is an <strong>additive</strong> wrapper around the chatbot: same chat
+UI, plus a collapsible <strong>⚙️ Parameters</strong> panel for changing configuration live —
+without restarting the process. (<code>launch_chatbot</code> and <code>launch_chatbot_with_index</code>
+are unchanged; use them when you don't need the panel.)</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tdfs4ds.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">launch_chatbot_app</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Same prerequisites as launch_chatbot (a connected context + built index).</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">demo</span> <span class="o">=</span> <span class="n">launch_chatbot_app</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">7860</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">The panel edits the same globals as the agent</p>
+<p>The admin panel does <strong>not</strong> keep its own configuration. Every field maps
+directly to the <strong>same <code>tdfs4ds.*</code> global</strong> that the consumer agent already
+reads (<code>tdfs4ds.SCHEMA</code>, <code>INSTRUCT_MODEL_*</code>, <code>EMBEDDING_MODEL_*</code>,
+<code>VECTOR_STORE_BACKEND</code>, <code>CHROMA_PATH</code>, …). Applying a change in the panel is
+exactly equivalent to setting that global in Python, so it also affects any
+<code>consumer_agent(...)</code> / <code>query_optimizer_agent(...)</code> calls made from the same
+process afterwards. Values are pre-filled from the current globals when the
+app starts — including whatever was loaded from env vars / <code>.env</code> / JSON
+config (see <a href="../configuration/overview.html">Configuration</a>).</p>
+</div>
+<p>The panel has four groups; each has an <strong>Apply</strong> button and a status line:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Fields</th>
+<th>What Apply does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Feature store database</strong></td>
+<td>database name</td>
+<td><code>tdfs4ds.connect(database=…, create_if_missing=False)</code>. <strong>Validated</strong>: a database that does not contain a tdfs4ds feature store is rejected and the active store is <em>not</em> changed. On success: sets <code>tdfs4ds.SCHEMA</code>, rebuilds the index, resets the agent, clears the chat.</td>
+</tr>
+<tr>
+<td><strong>Vector store</strong></td>
+<td>backend (<code>chroma</code>/<code>teradata</code>), Chroma path; <strong>Refresh / rebuild</strong> button</td>
+<td>Sets <code>VECTOR_STORE_BACKEND</code> / <code>CHROMA_PATH</code> and rebuilds. <strong>Refresh</strong> alone re-runs <code>build_vector_index(force_rebuild=True)</code> — use it after the business dictionary changes, since the local Chroma index does not auto-update.</td>
+</tr>
+<tr>
+<td><strong>Instruct model</strong></td>
+<td>provider, model, URL, API key, proxy</td>
+<td>Sets <code>INSTRUCT_MODEL_*</code> (incl. <code>INSTRUCT_MODEL_PROXY</code>) and resets the agent. The next LLM call builds a fresh client from these globals.</td>
+</tr>
+<tr>
+<td><strong>Embedding model</strong></td>
+<td>provider, model, URL, API key, proxy, dimension</td>
+<td>Sets <code>EMBEDDING_MODEL_*</code>, then rebuilds the index (embeddings changed) and resets the agent.</td>
+</tr>
+</tbody>
+</table>
+<p>Any change that affects the data or the model <strong>rebuilds the index when needed,
+resets the agent (<code>reset_consumer_agent()</code>), rotates the conversation thread, and
+clears the chat</strong> so the session starts clean against the new configuration.</p>
+<p>When run via the API server (<code>python -m tdfs4ds.serve</code>), this admin app is served
+automatically on a second port — see
+<a href="../deployment/api-server.html#chatbot-ui-admin-app">Deployment → OpenAI-compatible API server</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Database choice is process-wide — isolate per user with separate processes</p>
+<p>Because the panel mutates process-wide globals, switching the feature-store
+<strong>database</strong> changes it for everyone served by that process. To give each
+user their <strong>own</strong> database, run a <strong>separate process / container per user</strong>
+(one container per user, each with its own <code>TDFS4DS_SCHEMA</code>) rather than
+sharing one — see
+<a href="../deployment/api-server.html#per-user-database-choice-multi-tenant">Per-user database choice</a>.
+There is no per-session database isolation within a single process.</p>
+</div>
+<h2 id="business-dictionary-retrieval-architecture">Business dictionary &amp; retrieval architecture<a class="headerlink" href="#business-dictionary-retrieval-architecture" title="Permanent link">&para;</a></h2>
+<p>The agent answers from a <strong>3-level documentation hierarchy</strong> designed for
+chunk-free hierarchical RAG, using both structured SQL and vector search.</p>
+<h3 id="documentation-tables-all-validtime-temporal">Documentation tables (all VALIDTIME temporal)<a class="headerlink" href="#documentation-tables-all-validtime-temporal" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Table</th>
+<th>What it stores</th>
+<th>Populated by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>FS_BUSINESS_DICTIONARY_OBJECTS</code></td>
+<td>Object overview (<code>BUSINESS_DESCRIPTION</code>)</td>
+<td><code>document_process</code>, <code>document_dataset_incremental</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>FS_BUSINESS_DICTIONARY_SECTIONS</code></td>
+<td>Named sections per object (OVERVIEW, ENTITY, FEATURE_THEMES, BUSINESS_QUESTIONS, INTENDED_AUDIENCE)</td>
+<td><code>document_dataset_incremental</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>FS_BUSINESS_DICTIONARY_COLUMNS</code></td>
+<td>Per-column descriptions (feature name → view name → description)</td>
+<td><code>document_process</code>, <code>document_dataset_incremental</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-gets-vectorised">What gets vectorised<a class="headerlink" href="#what-gets-vectorised" title="Permanent link">&para;</a></h3>
+<p>The vector store maintains <strong>3 collections</strong>, populated by <code>build_vector_index()</code>:</p>
+<ul>
+<li><code>{prefix}_objects</code> ← <code>BUSINESS_DESCRIPTION</code> from OBJECTS</li>
+<li><code>{prefix}_sections</code> ← <code>SECTION_CONTENT</code> from SECTIONS</li>
+<li><code>{prefix}_columns</code> ← <code>BUSINESS_DESCRIPTION</code> from COLUMNS</li>
+</ul>
+<p>The prefix is <code>tdfs4ds</code> for Chroma (cosine-distance HNSW collections) and
+<code>tdfs4ds.TERADATA_VECTOR_STORE_PREFIX</code> for the Teradata backend.</p>
+<p>Documents are embedded in batches of 8 to respect rate limits (OpenAI, TEI, etc.).</p>
+<h3 id="backend-selection">Backend selection<a class="headerlink" href="#backend-selection" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">VECTOR_STORE_BACKEND</span> <span class="o">=</span> <span class="s1">&#39;chroma&#39;</span>    <span class="c1"># default — local or remote ChromaDB</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># or</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">tdfs4ds</span><span class="o">.</span><span class="n">VECTOR_STORE_BACKEND</span> <span class="o">=</span> <span class="s1">&#39;teradata&#39;</span>  <span class="c1"># Teradata Enterprise Vector Store</span>
+</span></code></pre></div>
+<p><code>build_vector_index()</code> and <code>search_vector_index()</code> dispatch on this setting;
+all skill code remains unchanged. The Teradata backend persists the three
+collections as named <code>TeradataVectorStore</code>s directly in Vantage and accepts
+either a LangChain <code>Embeddings</code> object (default — keeps your vLLM / TEI /
+OpenAI-compatible setup) or a <code>teradatagenai.TeradataAI</code> object (set
+<code>TERADATA_AI_API_TYPE</code> to opt in). See
+<a href="../configuration/llm-config.html#vector-store-backend">LLM &amp; embedding models</a>
+for the full configuration.</p>
+<h3 id="hybrid-retrieval-strategy">Hybrid retrieval strategy<a class="headerlink" href="#hybrid-retrieval-strategy" title="Permanent link">&para;</a></h3>
+<p>Each skill uses a mix of <strong>structured SQL</strong> (for precision) and <strong>vector search</strong>
+(for recall when names don't match exactly):</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Structured lookups</th>
+<th>Vector search</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEARCH</td>
+<td>BD_SECTIONS (FEATURE_THEMES, BUSINESS_QUESTIONS), BD_OBJECTS, catalog</td>
+<td>Yes — semantic priority, results prepended</td>
+</tr>
+<tr>
+<td>DEFINITION</td>
+<td>Feature catalog → process view → BD_COLUMNS; BD_OBJECTS + BD_SECTIONS for datasets</td>
+<td>Fallback only (when SQL returns nothing)</td>
+</tr>
+<tr>
+<td>USAGE</td>
+<td>BD_SECTIONS (INTENDED_AUDIENCE, OVERVIEW)</td>
+<td>Fallback only</td>
+</tr>
+<tr>
+<td>FRESHNESS</td>
+<td>Feature catalog → process catalog → follow_up_report (single feature); dataset catalog → all process_ids for the dataset's features → aggregated follow_up_report (dataset)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>SUMMARY</td>
+<td>Feature catalog + BD_SECTIONS (FEATURE_THEMES, OVERVIEW)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>LINEAGE</td>
+<td><code>build_teradata_dependency_graph</code> (DDL walk)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>EXPLAIN</td>
+<td><code>SHOW VIEW</code> DDL</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For multi-object DEFINITION queries</strong>, the skill also builds a <code>context_graph</code> dict
+(features, shared views, shared datasets) stored in <code>skill_result</code> and visualised in
+the chatbot's context panel. <strong>EXPLAIN does the same</strong> — <code>_skill_explain_multi</code>
+returns a <code>context_graph</code> (carrying each feature's <code>process_id</code> + <code>view_name</code>)
+and a <code>resolved_triplet</code> focus pointer, which <code>node_skill_explain</code> merges into
+<code>accumulated_context_graph</code>, so a follow-up turn after an EXPLAIN can resolve
+from cache.</p>
+<h3 id="vector-index-management">Vector index management<a class="headerlink" href="#vector-index-management" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tdfs4ds.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_vector_index</span><span class="p">,</span> <span class="n">search_vector_index</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">build_vector_index</span><span class="p">(</span><span class="n">force_rebuild</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>    <span class="c1"># incremental: indexes only new rows (Chroma)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">build_vector_index</span><span class="p">(</span><span class="n">force_rebuild</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>     <span class="c1"># full rebuild: wipe collections and reindex</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">search_vector_index</span><span class="p">(</span><span class="s1">&#39;total_amount&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>   <span class="c1"># raw vector hits (not used directly by skills)</span>
+</span></code></pre></div>
+<h2 id="listing-available-models">Listing available models<a class="headerlink" href="#listing-available-models" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tdfs4ds.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_instruct_models</span><span class="p">,</span> <span class="n">list_embedding_models</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">list_instruct_models</span><span class="p">()</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">list_embedding_models</span><span class="p">(</span><span class="n">sub_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;e5&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">])</span>
+</span></code></pre></div>
+<h2 id="notebooks">Notebooks<a class="headerlink" href="#notebooks" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>notebook dev/genai/09 - Consumer Agent Chatbot with tdfs4ds.ipynb</code> — architecture walkthrough, 7-intent test suite, 4-turn demo.</li>
+<li><code>notebook dev/genai/10 - Launch Consumer Agent Chatbot.ipynb</code> — minimal 4-cell launch.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/denismolin/tdfs4ds" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/tdfs4ds/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.action.edit", "content.action.view"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

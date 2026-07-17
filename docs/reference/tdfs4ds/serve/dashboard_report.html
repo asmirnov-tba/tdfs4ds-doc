@@ -1,0 +1,4509 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Temporal feature store for Teradata Vantage — for data scientists.">
+      
+      
+      
+        <link rel="canonical" href="https://denismolin.github.io/tdfs4ds/reference/tdfs4ds/serve/dashboard_report.html">
+      
+      
+        <link rel="prev" href="bootstrap.html">
+      
+      
+        <link rel="next" href="openai_router.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/img/teradata_logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>dashboard_report - tdfs4ds</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../assets/css/teradata.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tdfs4dsservedashboard_report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="tdfs4ds" class="md-header__button md-logo" aria-label="tdfs4ds" data-md-component="logo">
+      
+  <img src="../../../assets/img/tdfs4ds_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            tdfs4ds
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              dashboard_report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/denismolin/tdfs4ds" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    denismolin/tdfs4ds
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  tdfs4ds
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="tdfs4ds" class="md-nav__button md-logo" aria-label="tdfs4ds" data-md-component="logo">
+      
+  <img src="../../../assets/img/tdfs4ds_logo.png" alt="logo">
+
+    </a>
+    tdfs4ds
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/denismolin/tdfs4ds" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    denismolin/tdfs4ds
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tdfs4ds
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    tdfs4ds
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../agent/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    agent
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/chart_render.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chart_render
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/chatbot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chatbot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/consumer_agent.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    consumer_agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/embedding.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/graph.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/query_optimizer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    query_optimizer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/query_optimizer_graph.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    query_optimizer_graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/vector_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vector_index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/vector_store_teradata.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vector_store_teradata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../benchmark/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    benchmark
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    benchmark
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark/report.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark/runner.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    runner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cli
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_domain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    data_domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../dataset/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dataset
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_8" id="__nav_1_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    dataset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset/batch_retrieval.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    batch_retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset/builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset/dataset.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset/dataset_catalog.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dataset_catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../execution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../feature_store/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_store
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_11" id="__nav_1_11_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    feature_store
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_store/entity_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    entity_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_store/feature_data_processing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_data_processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_store/feature_query_retrieval.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_query_retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_store/feature_store_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feature_store_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../genai/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    genai
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_12" id="__nav_1_12_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    genai
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genai/documentation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lifecycle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../lineage/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_14" id="__nav_1_14_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    lineage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lineage/indexing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lineage/lineage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lineage/lineage_store.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage_store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lineage/network.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../process_store/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_store
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_15" id="__nav_1_15_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    process_store
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../process_store/process_followup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_followup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../process_store/process_query_administration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_query_administration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../process_store/process_registration_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_registration_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../process_store/process_store_catalog_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    process_store_catalog_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read_federation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    read_federation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../scheduling/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scheduling
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_17" id="__nav_1_17_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    scheduling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduling/parallel_plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    parallel_plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduling/script.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduling/unify.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    unify
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduling/viz.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    viz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_18" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    serve
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_18" id="__nav_1_18_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    serve
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dashboard_report
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="dashboard_report.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dashboard_report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;dashboard_report
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" dashboard_report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report--tdfs4dsservedashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tdfs4ds.serve.dashboard_report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._NAVY" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_NAVY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._ORANGE" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_ORANGE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._GREEN" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_GREEN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._RED" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._GREY" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_GREY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._TREEMAP_JS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_TREEMAP_JS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._TIMELINE_JS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_TIMELINE_JS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._GUIDE" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_GUIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report.CSS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;CSS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._esc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_esc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._fmt_int" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_fmt_int
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._fmt_bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_fmt_bytes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._first_line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_first_line
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._explainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_explainer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._kpi_card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_kpi_card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._svg_stacked_bars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_svg_stacked_bars
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._drill_treemap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_drill_treemap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._truncate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_truncate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._interactive_timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_interactive_timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._svg_calendar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_svg_calendar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._status_color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_status_color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_kpis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_kpis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_insights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_orphans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_orphans
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_run_history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_run_history
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_lineage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report.build_dashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;build_dashboard_report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report.write_dashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;write_dashboard_report
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="openai_router.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    openai_router
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="panels.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    panels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_19" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../utils/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    utils
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_19" id="__nav_1_19_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    utils
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/filter_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    filter_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/lineage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/query_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    query_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/reconnect.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    reconnect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/time_management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    time_management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/vector_store_auth.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vector_store_auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/visualization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    visualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;dashboard_report
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" dashboard_report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report--tdfs4dsservedashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tdfs4ds.serve.dashboard_report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._NAVY" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_NAVY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._ORANGE" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_ORANGE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._GREEN" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_GREEN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._RED" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._GREY" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_GREY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._TREEMAP_JS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_TREEMAP_JS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._TIMELINE_JS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_TIMELINE_JS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._GUIDE" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;_GUIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report.CSS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;CSS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._esc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_esc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._fmt_int" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_fmt_int
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._fmt_bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_fmt_bytes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._first_line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_first_line
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._explainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_explainer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._kpi_card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_kpi_card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._svg_stacked_bars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_svg_stacked_bars
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._drill_treemap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_drill_treemap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._truncate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_truncate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._interactive_timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_interactive_timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._svg_calendar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_svg_calendar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._status_color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_status_color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_kpis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_kpis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_insights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_orphans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_orphans
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_run_history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_run_history
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report._render_lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;_render_lineage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report.build_dashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;build_dashboard_report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdfs4ds.serve.dashboard_report.write_dashboard_report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;write_dashboard_report
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    tdfs4ds
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    serve
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tdfs4dsservedashboard_report">tdfs4ds.serve.dashboard_report<a class="headerlink" href="#tdfs4dsservedashboard_report" title="Permanent link">&para;</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="tdfs4ds.serve.dashboard_report" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">tdfs4ds.serve.dashboard_report</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <h3 id="tdfs4ds.serve.dashboard_report--tdfs4dsservedashboard_report">tdfs4ds.serve.dashboard_report<a class="headerlink" href="#tdfs4ds.serve.dashboard_report--tdfs4dsservedashboard_report" title="Permanent link">&para;</a></h3>
+<p>Render a compelling, self-contained <strong>interactive HTML report</strong> from a plain
+data dict describing the feature store (inventory, insight facts, technical
+storage-table sizes, orphan features, process run-history, freshness alerts,
+lineage dependency counts).</p>
+<p>Same philosophy as :mod:<code>tdfs4ds.benchmark.report</code>: the HTML is fully offline —
+<strong>inline SVG charts + scoped CSS, no JavaScript</strong> — so it renders identically in
+any browser, prints cleanly, embeds directly in the admin panel, and exports to a
+single <code>.html</code> file. Interactivity is via native <code>&lt;details&gt;</code> expand/collapse.</p>
+<p>The builder consumes <strong>only JSON-serialisable data</strong> (records / numbers), never
+Plotly figures, so the same document shows on-screen and downloads byte-identical.</p>
+<p>Public: :func:<code>build_dashboard_report</code>, :func:<code>write_dashboard_report</code>.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._NAVY" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_NAVY</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._NAVY" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_NAVY</span> <span class="o">=</span> <span class="s1">&#39;#00233C&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._ORANGE" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_ORANGE</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._ORANGE" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_ORANGE</span> <span class="o">=</span> <span class="s1">&#39;#FF5F00&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._GREEN" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_GREEN</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._GREEN" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_GREEN</span> <span class="o">=</span> <span class="s1">&#39;#27ae60&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._RED" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_RED</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._RED" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_RED</span> <span class="o">=</span> <span class="s1">&#39;#e74c3c&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._GREY" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_GREY</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._GREY" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_GREY</span> <span class="o">=</span> <span class="s1">&#39;#95a5a6&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._TREEMAP_JS" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_TREEMAP_JS</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._TREEMAP_JS" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_TREEMAP_JS</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">(function(){</span><span class="se">\n</span><span class="s1">  var wrap = document.currentScript.closest(</span><span class="se">\&#39;</span><span class="s1">.tm-wrap</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  if(!wrap || wrap._tmInit) return; wrap._tmInit = true;</span><span class="se">\n</span><span class="s1">  var model = JSON.parse(wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">.tm-data</span><span class="se">\&#39;</span><span class="s1">).textContent || </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var svg = wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">svg.treemap</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var crumb = wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">.tm-crumb</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var upBtn = wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">.tm-up</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var detail = wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">.tm-detail</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var stack = []; // breadcrumb of {label, nodes, kind}</span><span class="se">\n</span><span class="s1">  function shade(r){ r=Math.max(0,Math.min(1, r||0));</span><span class="se">\n</span><span class="s1">    var a=[255,210,176], b=[194,65,12];</span><span class="se">\n</span><span class="s1">    return </span><span class="se">\&#39;</span><span class="s1">rgb(</span><span class="se">\&#39;</span><span class="s1">+Math.round(a[0]+(b[0]-a[0])*r)+</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1">+Math.round(a[1]+(b[1]-a[1])*r)+</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1">+Math.round(a[2]+(b[2]-a[2])*r)+</span><span class="se">\&#39;</span><span class="s1">)</span><span class="se">\&#39;</span><span class="s1">; }</span><span class="se">\n</span><span class="s1">  function esc(s){ return String(s==null?</span><span class="se">\&#39;\&#39;</span><span class="s1">:s).replace(/&amp;/g,</span><span class="se">\&#39;</span><span class="s1">&amp;amp;</span><span class="se">\&#39;</span><span class="s1">).replace(/&lt;/g,</span><span class="se">\&#39;</span><span class="s1">&amp;lt;</span><span class="se">\&#39;</span><span class="s1">).replace(/&gt;/g,</span><span class="se">\&#39;</span><span class="s1">&amp;gt;</span><span class="se">\&#39;</span><span class="s1">).replace(/&quot;/g,</span><span class="se">\&#39;</span><span class="s1">&amp;quot;</span><span class="se">\&#39;</span><span class="s1">); }</span><span class="se">\n</span><span class="s1">  function fmt(n){ try{return Number(n).toLocaleString();}catch(e){return n;} }</span><span class="se">\n</span><span class="s1">  function trunc(s,n){ s=String(s); return s.length&lt;=n?s:s.slice(0,n-1)+</span><span class="se">\&#39;</span><span class="s1">…</span><span class="se">\&#39;</span><span class="s1">; }</span><span class="se">\n</span><span class="s1">  function level(){</span><span class="se">\n</span><span class="s1">    if(stack.length===0) return {kind:</span><span class="se">\&#39;</span><span class="s1">table</span><span class="se">\&#39;</span><span class="s1">, nodes:model.tables||[], crumb:</span><span class="se">\&#39;</span><span class="s1">All feature tables</span><span class="se">\&#39;</span><span class="s1">};</span><span class="se">\n</span><span class="s1">    return stack[stack.length-1];</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">  function render(){</span><span class="se">\n</span><span class="s1">    var L = level(); var nodes=(L.nodes||[]).filter(function(n){return (n.value||0)&gt;0;});</span><span class="se">\n</span><span class="s1">    nodes.sort(function(a,b){return (b.value||0)-(a.value||0);});</span><span class="se">\n</span><span class="s1">    crumb.textContent = L.crumb || </span><span class="se">\&#39;\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    upBtn.disabled = stack.length===0;</span><span class="se">\n</span><span class="s1">    var W=960, H=430, total=nodes.reduce(function(s,n){return s+(n.value||0);},0)||1;</span><span class="se">\n</span><span class="s1">    var nrows=Math.max(1, Math.round(Math.sqrt(nodes.length||1)));</span><span class="se">\n</span><span class="s1">    var per=Math.ceil((nodes.length||1)/nrows);</span><span class="se">\n</span><span class="s1">    var rowsArr=[]; for(var i=0;i&lt;nodes.length;i+=per) rowsArr.push(nodes.slice(i,i+per));</span><span class="se">\n</span><span class="s1">    var out=</span><span class="se">\&#39;\&#39;</span><span class="s1">; var y=0;</span><span class="se">\n</span><span class="s1">    rowsArr.forEach(function(row){</span><span class="se">\n</span><span class="s1">      var rv=row.reduce(function(s,n){return s+(n.value||0);},0)||1;</span><span class="se">\n</span><span class="s1">      var rh=(rv/total)*H, x=0;</span><span class="se">\n</span><span class="s1">      row.forEach(function(n){</span><span class="se">\n</span><span class="s1">        var w=(n.value/rv)*W; var fits=w&gt;60&amp;&amp;rh&gt;24;</span><span class="se">\n</span><span class="s1">        var canDrill = (L.kind===</span><span class="se">\&#39;</span><span class="s1">table</span><span class="se">\&#39;</span><span class="s1"> &amp;&amp; (n.processes||[]).length) ||</span><span class="se">\n</span><span class="s1">                       (L.kind===</span><span class="se">\&#39;</span><span class="s1">process</span><span class="se">\&#39;</span><span class="s1"> &amp;&amp; (n.features||[]).length);</span><span class="se">\n</span><span class="s1">        var fill = n.orphan ? </span><span class="se">\&#39;</span><span class="s1">#fdecea</span><span class="se">\&#39;</span><span class="s1"> : shade(n.ratio);</span><span class="se">\n</span><span class="s1">        var stroke = n.orphan ? </span><span class="se">\&#39;</span><span class="s1">#e74c3c</span><span class="se">\&#39;</span><span class="s1"> : </span><span class="se">\&#39;</span><span class="s1">#fff</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">        var hover = hoverText(L.kind, n);</span><span class="se">\n</span><span class="s1">        out += </span><span class="se">\&#39;</span><span class="s1">&lt;g class=&quot;tm-tile</span><span class="se">\&#39;</span><span class="s1">+(canDrill?</span><span class="se">\&#39;</span><span class="s1"> tm-can</span><span class="se">\&#39;</span><span class="s1">:</span><span class="se">\&#39;\&#39;</span><span class="s1">)+</span><span class="se">\&#39;</span><span class="s1">&quot; data-i=&quot;</span><span class="se">\&#39;</span><span class="s1">+nodes.indexOf(n)+</span><span class="se">\&#39;</span><span class="s1">&quot;&gt;</span><span class="se">\&#39;\n</span><span class="s1">          + </span><span class="se">\&#39;</span><span class="s1">&lt;rect x=&quot;</span><span class="se">\&#39;</span><span class="s1">+x.toFixed(1)+</span><span class="se">\&#39;</span><span class="s1">&quot; y=&quot;</span><span class="se">\&#39;</span><span class="s1">+y.toFixed(1)+</span><span class="se">\&#39;</span><span class="s1">&quot; width=&quot;</span><span class="se">\&#39;</span><span class="s1">+Math.max(1,w).toFixed(1)</span><span class="se">\n</span><span class="s1">          + </span><span class="se">\&#39;</span><span class="s1">&quot; height=&quot;</span><span class="se">\&#39;</span><span class="s1">+Math.max(1,rh).toFixed(1)+</span><span class="se">\&#39;</span><span class="s1">&quot; rx=&quot;2&quot; fill=&quot;</span><span class="se">\&#39;</span><span class="s1">+fill+</span><span class="se">\&#39;</span><span class="s1">&quot; stroke=&quot;</span><span class="se">\&#39;</span><span class="s1">+stroke</span><span class="se">\n</span><span class="s1">          + </span><span class="se">\&#39;</span><span class="s1">&quot; stroke-width=&quot;</span><span class="se">\&#39;</span><span class="s1">+(n.orphan?2:1.5)+</span><span class="se">\&#39;</span><span class="s1">&quot;&gt;&lt;title&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(hover)+</span><span class="se">\&#39;</span><span class="s1">&lt;/title&gt;&lt;/rect&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">        if(fits){</span><span class="se">\n</span><span class="s1">          out += </span><span class="se">\&#39;</span><span class="s1">&lt;text x=&quot;</span><span class="se">\&#39;</span><span class="s1">+(x+7)+</span><span class="se">\&#39;</span><span class="s1">&quot; y=&quot;</span><span class="se">\&#39;</span><span class="s1">+(y+18)+</span><span class="se">\&#39;</span><span class="s1">&quot; class=&quot;tm-label&quot;&gt;</span><span class="se">\&#39;\n</span><span class="s1">              + (n.orphan?</span><span class="se">\&#39;</span><span class="s1">⚠ </span><span class="se">\&#39;</span><span class="s1">:</span><span class="se">\&#39;\&#39;</span><span class="s1">) + esc(trunc(n.label, Math.floor(w/7.5)))+</span><span class="se">\&#39;</span><span class="s1">&lt;/text&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">          if(rh&gt;36) out += </span><span class="se">\&#39;</span><span class="s1">&lt;text x=&quot;</span><span class="se">\&#39;</span><span class="s1">+(x+7)+</span><span class="se">\&#39;</span><span class="s1">&quot; y=&quot;</span><span class="se">\&#39;</span><span class="s1">+(y+34)+</span><span class="se">\&#39;</span><span class="s1">&quot; class=&quot;tm-sub&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+fmt(n.value)+(L.kind===</span><span class="se">\&#39;</span><span class="s1">table</span><span class="se">\&#39;</span><span class="s1">?</span><span class="se">\&#39;</span><span class="s1"> rows</span><span class="se">\&#39;</span><span class="s1">:</span><span class="se">\&#39;\&#39;</span><span class="s1">)+</span><span class="se">\&#39;</span><span class="s1">&lt;/text&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">        }</span><span class="se">\n</span><span class="s1">        out += </span><span class="se">\&#39;</span><span class="s1">&lt;/g&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">        x+=w;</span><span class="se">\n</span><span class="s1">      });</span><span class="se">\n</span><span class="s1">      y+=rh;</span><span class="se">\n</span><span class="s1">    });</span><span class="se">\n</span><span class="s1">    svg.innerHTML = out;</span><span class="se">\n</span><span class="s1">    Array.prototype.forEach.call(svg.querySelectorAll(</span><span class="se">\&#39;</span><span class="s1">.tm-tile</span><span class="se">\&#39;</span><span class="s1">), function(g){</span><span class="se">\n</span><span class="s1">      g.addEventListener(</span><span class="se">\&#39;</span><span class="s1">click</span><span class="se">\&#39;</span><span class="s1">, function(){</span><span class="se">\n</span><span class="s1">        var n = nodes[+g.getAttribute(</span><span class="se">\&#39;</span><span class="s1">data-i</span><span class="se">\&#39;</span><span class="s1">)]; drill(L.kind, n);</span><span class="se">\n</span><span class="s1">      });</span><span class="se">\n</span><span class="s1">    });</span><span class="se">\n</span><span class="s1">    renderDetail(L.kind, nodes);</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">  function hoverText(kind, n){</span><span class="se">\n</span><span class="s1">    if(kind===</span><span class="se">\&#39;</span><span class="s1">table</span><span class="se">\&#39;</span><span class="s1">) return n.label+</span><span class="se">\&#39;\\</span><span class="s1">n</span><span class="se">\&#39;</span><span class="s1">+n.table+(n.process_id?(</span><span class="se">\&#39;\\</span><span class="s1">nprocess </span><span class="se">\&#39;</span><span class="s1">+n.process_id):</span><span class="se">\&#39;\&#39;</span><span class="s1">)+</span><span class="se">\&#39;\\</span><span class="s1">n</span><span class="se">\&#39;</span><span class="s1">+fmt(n.value)+</span><span class="se">\&#39;</span><span class="s1"> stored rows</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    if(kind===</span><span class="se">\&#39;</span><span class="s1">process</span><span class="se">\&#39;</span><span class="s1">) return n.label+(n.process_id?(</span><span class="se">\&#39;\\</span><span class="s1">nprocess </span><span class="se">\&#39;</span><span class="s1">+n.process_id):</span><span class="se">\&#39;\&#39;</span><span class="s1">)+</span><span class="se">\&#39;\\</span><span class="s1">n</span><span class="se">\&#39;</span><span class="s1">+(n.features?n.features.length:0)+</span><span class="se">\&#39;</span><span class="s1"> features · ~</span><span class="se">\&#39;</span><span class="s1">+fmt(n.value)+</span><span class="se">\&#39;</span><span class="s1"> rows</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    return n.label+</span><span class="se">\&#39;\\</span><span class="s1">n</span><span class="se">\&#39;</span><span class="s1">+(n.type||</span><span class="se">\&#39;\&#39;</span><span class="s1">)+(n.entity?(</span><span class="se">\&#39;</span><span class="s1"> · </span><span class="se">\&#39;</span><span class="s1">+n.entity):</span><span class="se">\&#39;\&#39;</span><span class="s1">)+(n.orphan?</span><span class="se">\&#39;\\</span><span class="s1">n⚠ orphan (not in catalog)</span><span class="se">\&#39;</span><span class="s1">:</span><span class="se">\&#39;\&#39;</span><span class="s1">)+</span><span class="se">\&#39;\\</span><span class="s1">n~</span><span class="se">\&#39;</span><span class="s1">+fmt(n.value)+</span><span class="se">\&#39;</span><span class="s1"> rows</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">  function drill(kind, n){</span><span class="se">\n</span><span class="s1">    if(kind===</span><span class="se">\&#39;</span><span class="s1">table</span><span class="se">\&#39;</span><span class="s1"> &amp;&amp; (n.processes||[]).length){</span><span class="se">\n</span><span class="s1">      stack.push({kind:</span><span class="se">\&#39;</span><span class="s1">process</span><span class="se">\&#39;</span><span class="s1">, nodes:n.processes, crumb:</span><span class="se">\&#39;</span><span class="s1">Table </span><span class="se">\&#39;</span><span class="s1">+n.label+</span><span class="se">\&#39;</span><span class="s1"> › processes</span><span class="se">\&#39;</span><span class="s1">});</span><span class="se">\n</span><span class="s1">      render();</span><span class="se">\n</span><span class="s1">    } else if(kind===</span><span class="se">\&#39;</span><span class="s1">process</span><span class="se">\&#39;</span><span class="s1"> &amp;&amp; (n.features||[]).length){</span><span class="se">\n</span><span class="s1">      stack.push({kind:</span><span class="se">\&#39;</span><span class="s1">feature</span><span class="se">\&#39;</span><span class="s1">, nodes:n.features, crumb:(crumb.textContent)+</span><span class="se">\&#39;</span><span class="s1"> › </span><span class="se">\&#39;</span><span class="s1">+n.label+</span><span class="se">\&#39;</span><span class="s1"> › features</span><span class="se">\&#39;</span><span class="s1">});</span><span class="se">\n</span><span class="s1">      render();</span><span class="se">\n</span><span class="s1">    }</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">  function renderDetail(kind, nodes){</span><span class="se">\n</span><span class="s1">    var html=</span><span class="se">\&#39;\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    if(kind===</span><span class="se">\&#39;</span><span class="s1">table</span><span class="se">\&#39;</span><span class="s1">){</span><span class="se">\n</span><span class="s1">      html=</span><span class="se">\&#39;</span><span class="s1">&lt;table class=&quot;data&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Process view&lt;/th&gt;&lt;th&gt;Process id&lt;/th&gt;&lt;th&gt;Features&lt;/th&gt;&lt;th&gt;Rows&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">      nodes.forEach(function(n){ html+=</span><span class="se">\&#39;</span><span class="s1">&lt;tr&gt;&lt;td class=&quot;name&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(n.label)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td class=&quot;mono&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(n.process_id||</span><span class="se">\&#39;</span><span class="s1">—</span><span class="se">\&#39;</span><span class="s1">)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+(n.processes?n.processes.reduce(function(s,p){return s+(p.features?p.features.length:0);},0):0)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+fmt(n.value)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;</span><span class="se">\&#39;</span><span class="s1">; });</span><span class="se">\n</span><span class="s1">      html+=</span><span class="se">\&#39;</span><span class="s1">&lt;/tbody&gt;&lt;/table&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    } else if(kind===</span><span class="se">\&#39;</span><span class="s1">process</span><span class="se">\&#39;</span><span class="s1">){</span><span class="se">\n</span><span class="s1">      html=</span><span class="se">\&#39;</span><span class="s1">&lt;table class=&quot;data&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Process view&lt;/th&gt;&lt;th&gt;Process id&lt;/th&gt;&lt;th&gt;#Features&lt;/th&gt;&lt;th&gt;Rows&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">      nodes.forEach(function(n){ html+=</span><span class="se">\&#39;</span><span class="s1">&lt;tr&gt;&lt;td class=&quot;name&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(n.label)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td class=&quot;mono&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(n.process_id||</span><span class="se">\&#39;</span><span class="s1">—</span><span class="se">\&#39;</span><span class="s1">)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+(n.features?n.features.length:0)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+fmt(n.value)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;</span><span class="se">\&#39;</span><span class="s1">; });</span><span class="se">\n</span><span class="s1">      html+=</span><span class="se">\&#39;</span><span class="s1">&lt;/tbody&gt;&lt;/table&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    } else {</span><span class="se">\n</span><span class="s1">      html=</span><span class="se">\&#39;</span><span class="s1">&lt;table class=&quot;data&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Feature&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Entity&lt;/th&gt;&lt;th&gt;Orphan&lt;/th&gt;&lt;th&gt;Rows&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">      nodes.forEach(function(n){ html+=</span><span class="se">\&#39;</span><span class="s1">&lt;tr&gt;&lt;td class=&quot;name&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(n.label)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(n.type||</span><span class="se">\&#39;</span><span class="s1">—</span><span class="se">\&#39;</span><span class="s1">)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(n.entity||</span><span class="se">\&#39;</span><span class="s1">—</span><span class="se">\&#39;</span><span class="s1">)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+(n.orphan?</span><span class="se">\&#39;</span><span class="s1">⚠ yes</span><span class="se">\&#39;</span><span class="s1">:</span><span class="se">\&#39;</span><span class="s1">no</span><span class="se">\&#39;</span><span class="s1">)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;td&gt;</span><span class="se">\&#39;</span><span class="s1">+fmt(n.value)+</span><span class="se">\&#39;</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;</span><span class="se">\&#39;</span><span class="s1">; });</span><span class="se">\n</span><span class="s1">      html+=</span><span class="se">\&#39;</span><span class="s1">&lt;/tbody&gt;&lt;/table&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    }</span><span class="se">\n</span><span class="s1">    detail.innerHTML = html;</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">  upBtn.addEventListener(</span><span class="se">\&#39;</span><span class="s1">click</span><span class="se">\&#39;</span><span class="s1">, function(){ if(stack.length){ stack.pop(); render(); } });</span><span class="se">\n</span><span class="s1">  render();</span><span class="se">\n</span><span class="s1">})();</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._TIMELINE_JS" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_TIMELINE_JS</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._TIMELINE_JS" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_TIMELINE_JS</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">(function(){</span><span class="se">\n</span><span class="s1">  var wrap = document.currentScript.closest(</span><span class="se">\&#39;</span><span class="s1">.tl-wrap</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  if(!wrap || wrap._tlInit) return; wrap._tlInit = true;</span><span class="se">\n</span><span class="s1">  var data = JSON.parse(wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">.tl-data</span><span class="se">\&#39;</span><span class="s1">).textContent || </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var svg = wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">svg.timeline</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var tip = wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">.tl-tip</span><span class="se">\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">  var rows = (data.rows||[]).map(function(r){</span><span class="se">\n</span><span class="s1">    return {view:r.view, s:Date.parse(r.start), e:Date.parse(r.end||r.start),</span><span class="se">\n</span><span class="s1">            status:r.status, filter:r.filter||</span><span class="se">\&#39;\&#39;</span><span class="s1">};</span><span class="se">\n</span><span class="s1">  }).filter(function(r){ return !isNaN(r.s); });</span><span class="se">\n</span><span class="s1">  if(!rows.length){ svg.outerHTML=</span><span class="se">\&#39;</span><span class="s1">&lt;p class=&quot;muted&quot;&gt;No run history.&lt;/p&gt;</span><span class="se">\&#39;</span><span class="s1">; return; }</span><span class="se">\n</span><span class="s1">  var views=[]; rows.forEach(function(r){ if(views.indexOf(r.view)&lt;0) views.push(r.view); });</span><span class="se">\n</span><span class="s1">  var dmin=Math.min.apply(null, rows.map(function(r){return r.s;}));</span><span class="se">\n</span><span class="s1">  var dmax=Math.max.apply(null, rows.map(function(r){return Math.max(r.e,r.s);}));</span><span class="se">\n</span><span class="s1">  if(dmax&lt;=dmin) dmax=dmin+86400000;</span><span class="se">\n</span><span class="s1">  var view0=dmin, view1=dmax; // current zoom window</span><span class="se">\n</span><span class="s1">  var LW=210, RW=20, RH=20, GAP=6, TOP=8, AXIS=22;</span><span class="se">\n</span><span class="s1">  var W=980, TRACK=W-LW-RW;</span><span class="se">\n</span><span class="s1">  var H=TOP+views.length*(RH+GAP)+AXIS;</span><span class="se">\n</span><span class="s1">  function esc(s){ return String(s==null?</span><span class="se">\&#39;\&#39;</span><span class="s1">:s).replace(/&amp;/g,</span><span class="se">\&#39;</span><span class="s1">&amp;amp;</span><span class="se">\&#39;</span><span class="s1">).replace(/&lt;/g,</span><span class="se">\&#39;</span><span class="s1">&amp;lt;</span><span class="se">\&#39;</span><span class="s1">).replace(/&gt;/g,</span><span class="se">\&#39;</span><span class="s1">&amp;gt;</span><span class="se">\&#39;</span><span class="s1">); }</span><span class="se">\n</span><span class="s1">  function clr(st){ st=String(st||</span><span class="se">\&#39;\&#39;</span><span class="s1">).toUpperCase();</span><span class="se">\n</span><span class="s1">    return st.indexOf(</span><span class="se">\&#39;</span><span class="s1">COMPLETED</span><span class="se">\&#39;</span><span class="s1">)===0?</span><span class="se">\&#39;</span><span class="s1">#27ae60</span><span class="se">\&#39;</span><span class="s1">:(st.indexOf(</span><span class="se">\&#39;</span><span class="s1">FAIL</span><span class="se">\&#39;</span><span class="s1">)===0?</span><span class="se">\&#39;</span><span class="s1">#e74c3c</span><span class="se">\&#39;</span><span class="s1">:</span><span class="se">\&#39;</span><span class="s1">#95a5a6</span><span class="se">\&#39;</span><span class="s1">); }</span><span class="se">\n</span><span class="s1">  function x(t){ return LW+((t-view0)/(view1-view0))*TRACK; }</span><span class="se">\n</span><span class="s1">  function fmtT(ms){ var d=new Date(ms); return d.toISOString().slice(0,16).replace(</span><span class="se">\&#39;</span><span class="s1">T</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1"> </span><span class="se">\&#39;</span><span class="s1">); }</span><span class="se">\n</span><span class="s1">  function ticks(){</span><span class="se">\n</span><span class="s1">    var span=view1-view0, n=6, out=</span><span class="se">\&#39;\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    for(var i=0;i&lt;=n;i++){ var t=view0+span*i/n; var px=LW+(TRACK*i/n);</span><span class="se">\n</span><span class="s1">      out+=</span><span class="se">\&#39;</span><span class="s1">&lt;line x1=&quot;</span><span class="se">\&#39;</span><span class="s1">+px+</span><span class="se">\&#39;</span><span class="s1">&quot; y1=&quot;</span><span class="se">\&#39;</span><span class="s1">+TOP+</span><span class="se">\&#39;</span><span class="s1">&quot; x2=&quot;</span><span class="se">\&#39;</span><span class="s1">+px+</span><span class="se">\&#39;</span><span class="s1">&quot; y2=&quot;</span><span class="se">\&#39;</span><span class="s1">+(H-AXIS)+</span><span class="se">\&#39;</span><span class="s1">&quot; stroke=&quot;#eef1f5&quot;/&gt;</span><span class="se">\&#39;\n</span><span class="s1">         +</span><span class="se">\&#39;</span><span class="s1">&lt;text x=&quot;</span><span class="se">\&#39;</span><span class="s1">+px+</span><span class="se">\&#39;</span><span class="s1">&quot; y=&quot;</span><span class="se">\&#39;</span><span class="s1">+(H-6)+</span><span class="se">\&#39;</span><span class="s1">&quot; text-anchor=&quot;middle&quot; class=&quot;tm-sub&quot; fill=&quot;#5A6B7B&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(fmtT(t))+</span><span class="se">\&#39;</span><span class="s1">&lt;/text&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    }</span><span class="se">\n</span><span class="s1">    return out;</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">  function render(){</span><span class="se">\n</span><span class="s1">    svg.setAttribute(</span><span class="se">\&#39;</span><span class="s1">viewBox</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1">0 0 </span><span class="se">\&#39;</span><span class="s1">+W+</span><span class="se">\&#39;</span><span class="s1"> </span><span class="se">\&#39;</span><span class="s1">+H);</span><span class="se">\n</span><span class="s1">    var out=ticks(); var y=TOP;</span><span class="se">\n</span><span class="s1">    views.forEach(function(v){</span><span class="se">\n</span><span class="s1">      out+=</span><span class="se">\&#39;</span><span class="s1">&lt;text x=&quot;</span><span class="se">\&#39;</span><span class="s1">+(LW-10)+</span><span class="se">\&#39;</span><span class="s1">&quot; y=&quot;</span><span class="se">\&#39;</span><span class="s1">+(y+RH/2+4)+</span><span class="se">\&#39;</span><span class="s1">&quot; text-anchor=&quot;end&quot; class=&quot;tl-label&quot;&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(v.length&gt;30?v.slice(0,29)+</span><span class="se">\&#39;</span><span class="s1">…</span><span class="se">\&#39;</span><span class="s1">:v)+</span><span class="se">\&#39;</span><span class="s1">&lt;/text&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">      out+=</span><span class="se">\&#39;</span><span class="s1">&lt;rect x=&quot;</span><span class="se">\&#39;</span><span class="s1">+LW+</span><span class="se">\&#39;</span><span class="s1">&quot; y=&quot;</span><span class="se">\&#39;</span><span class="s1">+y+</span><span class="se">\&#39;</span><span class="s1">&quot; width=&quot;</span><span class="se">\&#39;</span><span class="s1">+TRACK+</span><span class="se">\&#39;</span><span class="s1">&quot; height=&quot;</span><span class="se">\&#39;</span><span class="s1">+RH+</span><span class="se">\&#39;</span><span class="s1">&quot; rx=&quot;4&quot; fill=&quot;#f5f7fa&quot;/&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">      y+=RH+GAP;</span><span class="se">\n</span><span class="s1">    });</span><span class="se">\n</span><span class="s1">    rows.forEach(function(r){</span><span class="se">\n</span><span class="s1">      if(r.e&lt;view0 || r.s&gt;view1) return;</span><span class="se">\n</span><span class="s1">      var yi=views.indexOf(r.view); var ry=TOP+yi*(RH+GAP);</span><span class="se">\n</span><span class="s1">      var xs=Math.max(LW, x(r.s)), xe=Math.min(LW+TRACK, x(Math.max(r.e,r.s)));</span><span class="se">\n</span><span class="s1">      var w=Math.max(2.5, xe-xs);</span><span class="se">\n</span><span class="s1">      out+=</span><span class="se">\&#39;</span><span class="s1">&lt;rect class=&quot;tl-run&quot; x=&quot;</span><span class="se">\&#39;</span><span class="s1">+xs.toFixed(1)+</span><span class="se">\&#39;</span><span class="s1">&quot; y=&quot;</span><span class="se">\&#39;</span><span class="s1">+ry+</span><span class="se">\&#39;</span><span class="s1">&quot; width=&quot;</span><span class="se">\&#39;</span><span class="s1">+w.toFixed(1)+</span><span class="se">\&#39;</span><span class="s1">&quot; height=&quot;</span><span class="se">\&#39;</span><span class="s1">+RH+</span><span class="se">\&#39;</span><span class="s1">&quot; rx=&quot;2&quot; fill=&quot;</span><span class="se">\&#39;</span><span class="s1">+clr(r.status)+</span><span class="se">\&#39;</span><span class="s1">&quot; </span><span class="se">\&#39;\n</span><span class="s1">         +</span><span class="se">\&#39;</span><span class="s1">data-t=&quot;</span><span class="se">\&#39;</span><span class="s1">+r.s+</span><span class="se">\&#39;</span><span class="s1">&quot; data-st=&quot;</span><span class="se">\&#39;</span><span class="s1">+esc(r.status)+</span><span class="se">\&#39;</span><span class="s1">&quot; data-f=&quot;</span><span class="se">\&#39;</span><span class="s1">+esc(r.filter)+</span><span class="se">\&#39;</span><span class="s1">&quot; data-v=&quot;</span><span class="se">\&#39;</span><span class="s1">+esc(r.view)+</span><span class="se">\&#39;</span><span class="s1">&quot;/&gt;</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">    });</span><span class="se">\n</span><span class="s1">    svg.innerHTML=out;</span><span class="se">\n</span><span class="s1">    Array.prototype.forEach.call(svg.querySelectorAll(</span><span class="se">\&#39;</span><span class="s1">.tl-run</span><span class="se">\&#39;</span><span class="s1">), function(el){</span><span class="se">\n</span><span class="s1">      el.addEventListener(</span><span class="se">\&#39;</span><span class="s1">mousemove</span><span class="se">\&#39;</span><span class="s1">, function(ev){</span><span class="se">\n</span><span class="s1">        tip.style.display=</span><span class="se">\&#39;</span><span class="s1">block</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">        var b=wrap.getBoundingClientRect();</span><span class="se">\n</span><span class="s1">        tip.style.left=(ev.clientX-b.left+12)+</span><span class="se">\&#39;</span><span class="s1">px</span><span class="se">\&#39;</span><span class="s1">; tip.style.top=(ev.clientY-b.top+12)+</span><span class="se">\&#39;</span><span class="s1">px</span><span class="se">\&#39;</span><span class="s1">;</span><span class="se">\n</span><span class="s1">        tip.innerHTML=</span><span class="se">\&#39;</span><span class="s1">&lt;b&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(el.getAttribute(</span><span class="se">\&#39;</span><span class="s1">data-v</span><span class="se">\&#39;</span><span class="s1">))+</span><span class="se">\&#39;</span><span class="s1">&lt;/b&gt;&lt;br&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(fmtT(+el.getAttribute(</span><span class="se">\&#39;</span><span class="s1">data-t</span><span class="se">\&#39;</span><span class="s1">)))</span><span class="se">\n</span><span class="s1">          +</span><span class="se">\&#39;</span><span class="s1">&lt;br&gt;</span><span class="se">\&#39;</span><span class="s1">+esc(el.getAttribute(</span><span class="se">\&#39;</span><span class="s1">data-st</span><span class="se">\&#39;</span><span class="s1">))</span><span class="se">\n</span><span class="s1">          +(el.getAttribute(</span><span class="se">\&#39;</span><span class="s1">data-f</span><span class="se">\&#39;</span><span class="s1">)?(</span><span class="se">\&#39;</span><span class="s1">&lt;br&gt;filter: </span><span class="se">\&#39;</span><span class="s1">+esc(el.getAttribute(</span><span class="se">\&#39;</span><span class="s1">data-f</span><span class="se">\&#39;</span><span class="s1">))):</span><span class="se">\&#39;\&#39;</span><span class="s1">);</span><span class="se">\n</span><span class="s1">      });</span><span class="se">\n</span><span class="s1">      el.addEventListener(</span><span class="se">\&#39;</span><span class="s1">mouseleave</span><span class="se">\&#39;</span><span class="s1">, function(){ tip.style.display=</span><span class="se">\&#39;</span><span class="s1">none</span><span class="se">\&#39;</span><span class="s1">; });</span><span class="se">\n</span><span class="s1">    });</span><span class="se">\n</span><span class="s1">  }</span><span class="se">\n</span><span class="s1">  // wheel zoom (centered on cursor)</span><span class="se">\n</span><span class="s1">  svg.addEventListener(</span><span class="se">\&#39;</span><span class="s1">wheel</span><span class="se">\&#39;</span><span class="s1">, function(ev){</span><span class="se">\n</span><span class="s1">    ev.preventDefault();</span><span class="se">\n</span><span class="s1">    var b=svg.getBoundingClientRect();</span><span class="se">\n</span><span class="s1">    var frac=Math.min(1,Math.max(0,((ev.clientX-b.left)/b.width*W - LW)/TRACK));</span><span class="se">\n</span><span class="s1">    var c=view0+(view1-view0)*frac;</span><span class="se">\n</span><span class="s1">    var k=ev.deltaY&lt;0?0.8:1.25;</span><span class="se">\n</span><span class="s1">    var nv0=c-(c-view0)*k, nv1=c+(view1-c)*k;</span><span class="se">\n</span><span class="s1">    if(nv1-nv0&gt;60000){ view0=Math.max(dmin,nv0); view1=Math.min(dmax,nv1); render(); }</span><span class="se">\n</span><span class="s1">  }, {passive:false});</span><span class="se">\n</span><span class="s1">  // drag to zoom</span><span class="se">\n</span><span class="s1">  var dragX=null, band=null;</span><span class="se">\n</span><span class="s1">  svg.addEventListener(</span><span class="se">\&#39;</span><span class="s1">mousedown</span><span class="se">\&#39;</span><span class="s1">, function(ev){ dragX=ev.clientX;</span><span class="se">\n</span><span class="s1">    band=document.createElementNS(</span><span class="se">\&#39;</span><span class="s1">http://www.w3.org/2000/svg</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1">rect</span><span class="se">\&#39;</span><span class="s1">); });</span><span class="se">\n</span><span class="s1">  svg.addEventListener(</span><span class="se">\&#39;</span><span class="s1">mouseup</span><span class="se">\&#39;</span><span class="s1">, function(ev){</span><span class="se">\n</span><span class="s1">    if(dragX!==null){</span><span class="se">\n</span><span class="s1">      var b=svg.getBoundingClientRect();</span><span class="se">\n</span><span class="s1">      var f0=Math.min(dragX,ev.clientX), f1=Math.max(dragX,ev.clientX);</span><span class="se">\n</span><span class="s1">      if(f1-f0&gt;6){</span><span class="se">\n</span><span class="s1">        var t0=view0+(view1-view0)*Math.max(0,((f0-b.left)/b.width*W-LW)/TRACK);</span><span class="se">\n</span><span class="s1">        var t1=view0+(view1-view0)*Math.min(1,((f1-b.left)/b.width*W-LW)/TRACK);</span><span class="se">\n</span><span class="s1">        if(t1-t0&gt;60000){ view0=t0; view1=t1; render(); }</span><span class="se">\n</span><span class="s1">      }</span><span class="se">\n</span><span class="s1">      dragX=null;</span><span class="se">\n</span><span class="s1">    }</span><span class="se">\n</span><span class="s1">  });</span><span class="se">\n</span><span class="s1">  svg.addEventListener(</span><span class="se">\&#39;</span><span class="s1">dblclick</span><span class="se">\&#39;</span><span class="s1">, function(){ view0=dmin; view1=dmax; render(); });</span><span class="se">\n</span><span class="s1">  wrap.querySelector(</span><span class="se">\&#39;</span><span class="s1">.tl-reset</span><span class="se">\&#39;</span><span class="s1">).addEventListener(</span><span class="se">\&#39;</span><span class="s1">click</span><span class="se">\&#39;</span><span class="s1">, function(){ view0=dmin; view1=dmax; render(); });</span><span class="se">\n</span><span class="s1">  render();</span><span class="se">\n</span><span class="s1">})();</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._GUIDE" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">_GUIDE</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report._GUIDE" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">_GUIDE</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;storage&#39;</span><span class="p">:</span> <span class="s2">&quot;&lt;p&gt;Each &lt;code&gt;FS_T_*&lt;/code&gt; table physically stores several features in one table. The bar/tile size is the table&#39;s &lt;b&gt;NONSEQUENCED VALIDTIME&lt;/b&gt; row count — every temporal version, current and superseded.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span class=&#39;o&#39;&gt;Orange&lt;/span&gt; = &lt;b&gt;CURRENT VALIDTIME&lt;/b&gt; rows (the live slice served today). &lt;span class=&#39;n&#39;&gt;Navy&lt;/span&gt; = &lt;b&gt;history&lt;/b&gt; rows (superseded versions). A tall navy segment means deep temporal history — candidate for review if storage is a concern.&lt;/li&gt;&lt;li&gt;The treemap tile area is the stored-row share; deeper orange = a higher history ratio.&lt;/li&gt;&lt;li&gt;Counts come from the last &lt;i&gt;Build storage counts&lt;/i&gt; pass and run fast when stats/PI/partitions are in place.&lt;/li&gt;&lt;/ul&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;orphans&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;p&gt;An &lt;b&gt;orphan&lt;/b&gt; is a &lt;code&gt;FEATURE_ID&lt;/code&gt; physically present in a storage table but no longer in &lt;code&gt;FS_FEATURE_CATALOG&lt;/code&gt; — a feature de-registered without purging its stored rows. This is &lt;b&gt;report-only&lt;/b&gt;; nothing is deleted.&lt;/p&gt;&lt;p&gt;Orphan rows still consume space and history depth. Investigate before purging.&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;run_history&#39;</span><span class="p">:</span> <span class="s2">&quot;&lt;p&gt;The execution record of each registered process from the follow-up table.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Timeline&lt;/b&gt;: each bar is one run, positioned on a shared time axis and coloured &lt;span class=&#39;g&#39;&gt;green=completed&lt;/span&gt; / &lt;span class=&#39;r&#39;&gt;red=failed&lt;/span&gt; / &lt;span class=&#39;y&#39;&gt;grey=running&lt;/span&gt;. Gaps reveal cadence; clustered red reveals instability.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Calendar&lt;/b&gt;: day × process — a quick scan for stale processes (no recent cells) and failure days.&lt;/li&gt;&lt;/ul&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;freshness&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;p&gt;A process that runs &lt;b&gt;segmented&lt;/b&gt; (a FilterManager or date-part loop) can be fresh for one segment and stale for another. These alerts flag the &lt;b&gt;stalest segment&lt;/b&gt; per process, so a partially-stale process is never read as fully fresh.&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;lineage&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;p&gt;How connected each process/dataset is in the persisted lineage graph (&lt;code&gt;FS_LINEAGE_GRAPH&lt;/code&gt;): &lt;b&gt;upstream&lt;/b&gt; = objects it depends on, &lt;b&gt;downstream&lt;/b&gt; = objects that depend on it. High downstream = high blast radius: a change here re-documents / can break many consumers.&lt;/p&gt;&#39;</span><span class="p">}</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="tdfs4ds.serve.dashboard_report.CSS" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">CSS</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#tdfs4ds.serve.dashboard_report.CSS" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">CSS</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*{box-sizing:border-box}</span><span class="se">\n</span><span class="s1">.td-report{--navy:#00233C;--orange:#FF5F00;--ink:#2c3e50;--muted:#5A6B7B;</span><span class="se">\n</span><span class="s1">  --line:#E3E8EE;--bg:#f5f7fa;--panel:#ffffff;</span><span class="se">\n</span><span class="s1">  font:15px/1.55 system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;</span><span class="se">\n</span><span class="s1">  color:var(--ink);max-width:1080px;margin:0 auto;padding:8px 4px 60px}</span><span class="se">\n</span><span class="s1">.td-report h1{margin:.2em 0 .1em;font-size:28px;letter-spacing:-.02em;color:#fff}</span><span class="se">\n</span><span class="s1">.td-report h2{margin:0 0 6px;font-size:19px;color:var(--navy);letter-spacing:-.01em}</span><span class="se">\n</span><span class="s1">.td-report h4{margin:16px 0 8px;font-size:12px;color:var(--muted);</span><span class="se">\n</span><span class="s1">  text-transform:uppercase;letter-spacing:.06em}</span><span class="se">\n</span><span class="s1">.td-report .muted{color:var(--muted);margin:.2em 0 12px;font-size:13.5px}</span><span class="se">\n</span><span class="s1">.td-report code{background:#eef1f5;border-radius:5px;padding:1px 6px;</span><span class="se">\n</span><span class="s1">  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:#c0392b}</span><span class="se">\n\n</span><span class="s1">.td-report header.hero{background:linear-gradient(135deg,#00233C,#004069);</span><span class="se">\n</span><span class="s1">  border-radius:16px;padding:26px 30px;margin-bottom:22px;position:relative;overflow:hidden}</span><span class="se">\n</span><span class="s1">.td-report header.hero:before{content:&quot;&quot;;position:absolute;right:-50px;top:-50px;</span><span class="se">\n</span><span class="s1">  width:200px;height:200px;background:radial-gradient(circle,rgba(255,95,0,.30),transparent 65%)}</span><span class="se">\n</span><span class="s1">.td-report .kicker{letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;</span><span class="se">\n</span><span class="s1">  color:var(--orange);font-weight:700}</span><span class="se">\n</span><span class="s1">.td-report .schema{font-size:17px;color:#fff;font-weight:600;margin-top:2px}</span><span class="se">\n</span><span class="s1">.td-report .meta-line{color:#bcd0e0;font-size:13px;margin-top:10px;display:flex;</span><span class="se">\n</span><span class="s1">  flex-wrap:wrap;gap:6px 18px}</span><span class="se">\n</span><span class="s1">.td-report .meta-line b{color:#fff;font-weight:600}</span><span class="se">\n\n</span><span class="s1">.td-report .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));</span><span class="se">\n</span><span class="s1">  gap:13px;margin:0 0 20px}</span><span class="se">\n</span><span class="s1">.td-report .kpi{background:var(--panel);border:1px solid var(--line);border-radius:13px;</span><span class="se">\n</span><span class="s1">  padding:15px 16px;position:relative;box-shadow:0 1px 4px rgba(0,35,60,.06)}</span><span class="se">\n</span><span class="s1">.td-report .kpi:before{content:&quot;&quot;;position:absolute;left:0;top:13px;bottom:13px;width:3px;</span><span class="se">\n</span><span class="s1">  border-radius:3px;background:var(--orange)}</span><span class="se">\n</span><span class="s1">.td-report .kpi-label{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}</span><span class="se">\n</span><span class="s1">.td-report .kpi-value{font-size:25px;font-weight:800;margin-top:5px;color:var(--navy)}</span><span class="se">\n</span><span class="s1">.td-report .kpi-sub{font-size:11.5px;color:var(--muted);margin-top:3px}</span><span class="se">\n\n</span><span class="s1">.td-report section.card{background:var(--panel);border:1px solid var(--line);</span><span class="se">\n</span><span class="s1">  border-radius:15px;padding:20px 22px;margin:18px 0;box-shadow:0 1px 4px rgba(0,35,60,.05)}</span><span class="se">\n\n</span><span class="s1">.td-report .facts{display:flex;flex-wrap:wrap;gap:12px}</span><span class="se">\n</span><span class="s1">.td-report .fact{flex:1;min-width:210px;background:#f8fafc;border:1px solid var(--line);</span><span class="se">\n</span><span class="s1">  border-radius:11px;padding:13px 16px}</span><span class="se">\n</span><span class="s1">.td-report .fact-h{font-weight:700;color:var(--navy);font-size:.92rem}</span><span class="se">\n</span><span class="s1">.td-report .fact-d{color:#334155;font-size:.85rem;margin-top:4px}</span><span class="se">\n\n</span><span class="s1">.td-report table.data{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}</span><span class="se">\n</span><span class="s1">.td-report table.data th{text-align:right;color:var(--muted);font-weight:600;font-size:11.5px;</span><span class="se">\n</span><span class="s1">  text-transform:uppercase;letter-spacing:.04em;padding:6px 10px;border-bottom:2px solid var(--orange)}</span><span class="se">\n</span><span class="s1">.td-report table.data th:first-child{text-align:left}</span><span class="se">\n</span><span class="s1">.td-report table.data td{text-align:right;padding:7px 10px;border-bottom:1px solid var(--line)}</span><span class="se">\n</span><span class="s1">.td-report table.data td.name{text-align:left;font-weight:600;color:var(--navy)}</span><span class="se">\n</span><span class="s1">.td-report table.data tr:hover td{background:#f8fafc}</span><span class="se">\n</span><span class="s1">.td-report .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:#334155}</span><span class="se">\n\n</span><span class="s1">.td-report .chart-wrap{margin-top:10px}</span><span class="se">\n</span><span class="s1">.td-report svg.barchart,.td-report svg.treemap,.td-report svg.timeline{width:100%;height:auto;display:block}</span><span class="se">\n</span><span class="s1">.td-report .bar-label{fill:var(--muted);font-size:12.5px}</span><span class="se">\n</span><span class="s1">.td-report .bar-track{fill:#eef1f5}</span><span class="se">\n</span><span class="s1">.td-report .bar-value{fill:var(--navy);font-size:12px;font-weight:600}</span><span class="se">\n</span><span class="s1">/* Treemap tiles: dark text on a legible orange for contrast */</span><span class="se">\n</span><span class="s1">.td-report .tm-label{fill:#00233C;font-size:12px;font-weight:700}</span><span class="se">\n</span><span class="s1">.td-report .tm-sub{fill:#00233C;font-size:11px;opacity:.8}</span><span class="se">\n</span><span class="s1">.td-report svg.timeline .tm-sub{font-size:10px}</span><span class="se">\n\n</span><span class="s1">/* Drillable treemap widget */</span><span class="se">\n</span><span class="s1">.td-report .tm-wrap{margin-top:10px}</span><span class="se">\n</span><span class="s1">.td-report .tm-bc{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;color:var(--navy)}</span><span class="se">\n</span><span class="s1">.td-report .tm-up{cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:6px;</span><span class="se">\n</span><span class="s1">  padding:3px 10px;font-size:12px;color:var(--navy)}</span><span class="se">\n</span><span class="s1">.td-report .tm-up:disabled{opacity:.4;cursor:default}</span><span class="se">\n</span><span class="s1">.td-report .tm-crumb{font-weight:600}</span><span class="se">\n</span><span class="s1">.td-report svg.treemap .tm-can{cursor:pointer}</span><span class="se">\n</span><span class="s1">.td-report svg.treemap .tm-tile rect{transition:opacity .12s}</span><span class="se">\n</span><span class="s1">.td-report svg.treemap .tm-can:hover rect{opacity:.82;stroke:#00233C;stroke-width:2}</span><span class="se">\n</span><span class="s1">.td-report .tm-detail{margin-top:12px}</span><span class="se">\n\n</span><span class="s1">/* Calendar — small dedicated labels so the dense grid stays readable */</span><span class="se">\n</span><span class="s1">.td-report .cal-label{fill:var(--muted);font-size:10.5px}</span><span class="se">\n</span><span class="s1">.td-report .cal-head{fill:var(--muted);font-size:9.5px}</span><span class="se">\n\n</span><span class="s1">/* Interactive timeline */</span><span class="se">\n</span><span class="s1">.td-report .tl-wrap{position:relative;margin-top:10px}</span><span class="se">\n</span><span class="s1">.td-report .tl-ctl{display:flex;align-items:center;gap:12px;margin-bottom:6px}</span><span class="se">\n</span><span class="s1">.td-report .tl-reset{cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:6px;</span><span class="se">\n</span><span class="s1">  padding:3px 10px;font-size:12px;color:var(--navy)}</span><span class="se">\n</span><span class="s1">.td-report .tl-hint{font-size:11.5px;color:var(--muted)}</span><span class="se">\n</span><span class="s1">.td-report .tl-label{fill:var(--muted);font-size:11.5px}</span><span class="se">\n</span><span class="s1">.td-report svg.timeline .tl-run{cursor:pointer}</span><span class="se">\n</span><span class="s1">.td-report svg.timeline .tl-run:hover{stroke:#00233C;stroke-width:1.5}</span><span class="se">\n</span><span class="s1">.td-report .tl-tip{position:absolute;z-index:5;pointer-events:none;background:#00233C;color:#fff;</span><span class="se">\n</span><span class="s1">  font-size:11.5px;line-height:1.4;padding:6px 9px;border-radius:7px;max-width:320px;</span><span class="se">\n</span><span class="s1">  box-shadow:0 2px 8px rgba(0,0,0,.25)}</span><span class="se">\n\n</span><span class="s1">.td-report .notice{padding:11px 14px;border-radius:10px;background:#f8fafc;</span><span class="se">\n</span><span class="s1">  border:1px solid var(--line);font-size:13.5px;color:var(--muted)}</span><span class="se">\n</span><span class="s1">.td-report .notice-warn{border-color:rgba(231,76,60,.4);background:rgba(231,76,60,.08);color:#a93226}</span><span class="se">\n</span><span class="s1">.td-report .notice-ok{border-color:rgba(39,174,96,.4);background:rgba(39,174,96,.08);color:#1e8449}</span><span class="se">\n\n</span><span class="s1">.td-report .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:12.5px;color:var(--muted)}</span><span class="se">\n</span><span class="s1">.td-report .legend span{display:inline-flex;align-items:center;gap:6px}</span><span class="se">\n</span><span class="s1">.td-report .dot{width:11px;height:11px;border-radius:3px;display:inline-block}</span><span class="se">\n\n</span><span class="s1">.td-report details.plan{margin-top:12px}</span><span class="se">\n</span><span class="s1">.td-report details.plan&gt;summary{cursor:pointer;color:var(--orange);font-size:13px;font-weight:600}</span><span class="se">\n</span><span class="s1">.td-report details.explain{margin-top:14px;border-top:1px dashed var(--line);padding-top:10px}</span><span class="se">\n</span><span class="s1">.td-report details.explain&gt;summary{cursor:pointer;color:var(--orange);font-size:13px;</span><span class="se">\n</span><span class="s1">  font-weight:600;list-style:none;display:inline-flex;align-items:center;gap:7px;user-select:none}</span><span class="se">\n</span><span class="s1">.td-report details.explain&gt;summary::-webkit-details-marker{display:none}</span><span class="se">\n</span><span class="s1">.td-report details.explain&gt;summary:before{content:&quot;?&quot;;display:inline-flex;align-items:center;</span><span class="se">\n</span><span class="s1">  justify-content:center;width:18px;height:18px;border-radius:50%;background:rgba(255,95,0,.15);</span><span class="se">\n</span><span class="s1">  color:var(--orange);font-size:12px;font-weight:700}</span><span class="se">\n</span><span class="s1">.td-report .explain-body{font-size:13.5px;color:#334155;background:#f8fafc;border:1px solid var(--line);</span><span class="se">\n</span><span class="s1">  border-radius:10px;padding:13px 16px;margin-top:8px}</span><span class="se">\n</span><span class="s1">.td-report .explain-body p{margin:.2em 0 .7em}.td-report .explain-body p:last-child{margin-bottom:0}</span><span class="se">\n</span><span class="s1">.td-report .explain-body ul{margin:.3em 0 .5em;padding-left:20px}</span><span class="se">\n</span><span class="s1">.td-report .explain-body li{margin:5px 0}</span><span class="se">\n</span><span class="s1">.td-report .explain-body code{background:#eef1f5;border:1px solid var(--line)}</span><span class="se">\n</span><span class="s1">.td-report .explain-body .g{color:#1e8449;font-weight:600}</span><span class="se">\n</span><span class="s1">.td-report .explain-body .r{color:#a93226;font-weight:600}</span><span class="se">\n</span><span class="s1">.td-report .explain-body .y{color:#b9770e;font-weight:600}</span><span class="se">\n</span><span class="s1">.td-report .explain-body .o{color:var(--orange);font-weight:600}</span><span class="se">\n</span><span class="s1">.td-report .explain-body .n{color:var(--navy);font-weight:600}</span><span class="se">\n\n</span><span class="s1">/* the inventory tree reuses _dash_tree_html</span><span class="se">\&#39;</span><span class="s1">s own scoped .td-tree styles */</span><span class="se">\n</span><span class="s1">.td-report footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:30px;line-height:1.7}</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._esc" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_esc</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._esc" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_esc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._fmt_int" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_fmt_int</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._fmt_int" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_fmt_int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._fmt_bytes" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_fmt_bytes</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._fmt_bytes" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_fmt_bytes</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._first_line" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_first_line</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._first_line" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_first_line</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._explainer" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_explainer</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._explainer" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_explainer</span><span class="p">(</span><span class="n">body_html</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>A collapsible 'How to read this' block, appended to a section.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._kpi_card" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_kpi_card</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._kpi_card" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_kpi_card</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._svg_stacked_bars" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_svg_stacked_bars</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._svg_stacked_bars" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_svg_stacked_bars</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">label_w</span><span class="o">=</span><span class="mi">230</span><span class="p">,</span> <span class="n">track_w</span><span class="o">=</span><span class="mi">520</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Horizontal stacked bars: each row = (label, current, history, hover).</p>
+<p>Stack width = current + history; current drawn in orange, history in navy.
+Values None/0 tolerated. Returns an inline <code>&lt;svg&gt;</code> string.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._drill_treemap" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_drill_treemap</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._drill_treemap" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_drill_treemap</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">hierarchy</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Drillable two-level treemap (tables → processes → features) as a self-
+contained widget: an inline JSON model + an SVG/table container + inline JS
+that lays out tiles and handles click-drill + a synced detail table.</p>
+<p>No external libs / no fetch — works on-screen (injected) and in the export.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._truncate" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_truncate</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._truncate" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_truncate</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._interactive_timeline" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_interactive_timeline</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._interactive_timeline" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_interactive_timeline</span><span class="p">(</span><span class="n">rh</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Zoomable run timeline as a self-contained widget.</p>
+<p><code>rh</code> = {rows:[{view,start,end,status,filter}], t_min, t_max}. The browser
+script lays out one lane per process on a datetime axis, supports wheel-zoom +
+drag-to-zoom + reset, and shows datetime · status · filter/TimeManager params
+in a hover tooltip. No external libs / no fetch.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._svg_calendar" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_svg_calendar</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._svg_calendar" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_svg_calendar</span><span class="p">(</span><span class="n">cal</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label_w</span><span class="o">=</span><span class="mi">170</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Day × process status grid. cal = {view_name: {day_str: ok_bool}}.</p>
+<p>Uses a small dedicated label class so the dense grid stays readable.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._status_color" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_status_color</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._status_color" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_status_color</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_kpis" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_kpis</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_kpis" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_kpis</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_insights" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_insights</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_insights" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_insights</span><span class="p">(</span><span class="n">insights</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_inventory" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_inventory</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_inventory" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_inventory</span><span class="p">(</span><span class="n">tree_html</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_storage" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_storage</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_storage" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_storage</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">hierarchy</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_orphans" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_orphans</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_orphans" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_orphans</span><span class="p">(</span><span class="n">orphans</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_run_history" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_run_history</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_run_history" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_run_history</span><span class="p">(</span><span class="n">rh</span><span class="p">,</span> <span class="n">window_days</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_freshness" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_freshness</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_freshness" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_freshness</span><span class="p">(</span><span class="n">alerts</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report._render_lineage" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">_render_lineage</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report._render_lineage" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_render_lineage</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report.build_dashboard_report" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">build_dashboard_report</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report.build_dashboard_report" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">build_dashboard_report</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Render <code>data</code> (a plain dict) to one self-contained interactive HTML doc.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tdfs4ds.serve.dashboard_report.write_dashboard_report" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">write_dashboard_report</span>
+
+
+<a href="#tdfs4ds.serve.dashboard_report.write_dashboard_report" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">write_dashboard_report</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Render <code>data</code> to HTML and write it to disk; return the file path.</p>
+<p>When <code>out_path</code> is None, writes under <code>{tdfs4ds.DASHBOARD_REPORT_DIR}/</code> with
+a timestamped filename (directory created on demand).</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="bootstrap.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: bootstrap">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                bootstrap
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="openai_router.html" class="md-footer__link md-footer__link--next" aria-label="Next: openai_router">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                openai_router
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/denismolin/tdfs4ds" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/tdfs4ds/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
